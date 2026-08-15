@@ -1,0 +1,36 @@
+/* OpenEduOps — Typography
+   Three open-source families. Display sets the tone, body does the work, mono means machine.
+   Sentence case for headings. ALLCAPS reserved for mono labels only. Two weights per surface, max. */
+
+:root {
+  /* ---- Families ---- */
+  --font-display: 'Space Grotesk', system-ui, sans-serif;  /* headings, titles, thumbnails */
+  --font-body:    'Inter', system-ui, sans-serif;          /* narration, captions, documents */
+  --font-mono:    'JetBrains Mono', ui-monospace, monospace;/* code, terminal, paths, labels */
+
+  /* ---- Weights ---- */
+  --fw-body:        400; /* @kind font */
+  --fw-medium:      500; /* @kind font */
+  --fw-semibold:    600; /* @kind font */
+  --fw-display:     700; /* @kind font */
+
+  /* ---- Type scale (print/PDF rem-based, mirrors on-screen sizes) ---- */
+  --fs-display: 3.25rem;   /* Display / H1 — Space Grotesk 700 */
+  --fs-h2:      2.25rem;   /* Section / H2 — 600 */
+  --fs-h3:      1.5rem;    /* Block / H3 — 600 */
+  --fs-body:    1rem;      /* Body — Inter 400 */
+  --fs-caption: 0.8125rem; /* Caption — Inter 500 */
+  --fs-label:   0.75rem;   /* Label — Mono 500, ALLCAPS */
+
+  /* ---- Line heights ---- */
+  --lh-tight:   1.05; /* @kind font */
+  --lh-heading: 1.15; /* @kind font */
+  --lh-body:    1.6; /* @kind font */
+  --lh-mono:    1.5; /* @kind font */
+
+  /* ---- Tracking ---- */
+  --ls-display: -0.02em;
+  --ls-tight:   -0.01em;
+  --ls-label:   0.12em;   /* mono eyebrows / tags */
+  --ls-mono:    0; /* @kind font */
+}

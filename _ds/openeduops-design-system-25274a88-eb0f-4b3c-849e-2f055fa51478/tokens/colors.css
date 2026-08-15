@@ -1,0 +1,103 @@
+/* OpenEduOps — Colour system
+   Five colours, clear jobs. Discipline is in the proportion (60/20/10/10), not adding more.
+   Orange = attention & identity. Teal = system & success. Navy + white/mist do the heavy lifting. */
+
+:root {
+  /* ---- Base palette ---- */
+  --navy:        #0B1F3A;   /* Deep Navy — primary ink: text, backgrounds, the mark */
+  --orange:      #FF6B35;   /* Signal Orange — primary accent: nodes, highlights, one CTA */
+  --teal:        #00C9A7;   /* Open Teal — secondary accent: success, code prompts, light nodes */
+  --mist:        #E8EEF4;   /* Mist — surface: cards, panels, zebra rows */
+  --white:       #FFFFFF;   /* Paper — the breathing room everything sits on */
+
+  /* ---- Navy tints (derived, for borders/hover/elevation on light surfaces) ---- */
+  --navy-90:     #233650;
+  --navy-70:     #4a5a72;
+  --navy-50:     #7d8a9c;   /* muted blue-grey — code comments, captions */
+  --navy-30:     #b3bccA;
+  --navy-15:     #d6dde6;   /* hairline borders on light */
+
+  /* ---- Accent tints ---- */
+  --orange-soft: #ffe5db;   /* orange wash — chips/fills on light */
+  --teal-soft:   #d4f6ef;   /* teal wash — success chips on light */
+  --teal-dim:    #0a9c84;   /* teal that passes as text on white when needed sparingly */
+
+  /* ---- Code / terminal surface ---- */
+  --code-bg:     #07172c;   /* dark navy/near-black panel */
+  --code-comment:#7d8a9c;   /* muted blue-grey comments */
+
+  /* ================= Semantic aliases ================= */
+  /* Text */
+  --text-strong:   var(--navy);
+  --text-body:     var(--navy);
+  --text-muted:    var(--navy-50);
+  --text-on-dark:  var(--white);
+  --text-on-accent: var(--navy);   /* text on orange/teal blocks is ALWAYS navy */
+
+  /* Surfaces */
+  --surface-page:    var(--white);
+  --surface-card:    var(--white);
+  --surface-sunken:  var(--mist);
+  --surface-inverse: var(--navy);
+  --surface-code:    var(--code-bg);
+
+  /* Accents by role */
+  --accent-identity: var(--orange);  /* "look here", the signature */
+  --accent-system:   var(--teal);    /* prompts, success, done states */
+  --cta:             var(--orange);
+
+  /* Lines */
+  --border-hairline: var(--navy-15);
+  --border-strong:   var(--navy);
+
+  /* Feedback */
+  --success: var(--teal);
+  --info:    var(--navy);
+  --warning: var(--orange);
+}
+
+/* ================= Dark theme ================= */
+/* Opt-in: set data-theme="dark" on <html> (or any container) to flip the SEMANTIC
+   aliases below. The base palette never changes — only what each surface/text role
+   resolves to. Orange (identity) and teal (system) hold across both themes, and text
+   on an accent block stays navy in both. Build against the semantic tokens, not the
+   base ones, and a component themes for free. */
+
+/* An explicitly pinned light theme re-asserts the light values, so it stays light even
+   inside a dark ancestor or under a dark OS preference. */
+[data-theme="light"] {
+  --text-strong:    var(--navy);
+  --text-body:      var(--navy);
+  --text-muted:     var(--navy-50);
+  --text-on-dark:   var(--white);
+  --text-on-accent: var(--navy);
+  --surface-page:    var(--white);
+  --surface-card:    var(--white);
+  --surface-sunken:  var(--mist);
+  --surface-inverse: var(--navy);
+  --border-hairline: var(--navy-15);
+  --border-strong:   var(--navy);
+  --info: var(--navy);
+}
+
+[data-theme="dark"] {
+  /* Text */
+  --text-strong:    var(--white);
+  --text-body:      var(--mist);
+  --text-muted:     var(--navy-30);
+  --text-on-dark:   var(--white);
+  --text-on-accent: var(--navy);    /* unchanged — still navy on orange/teal */
+
+  /* Surfaces */
+  --surface-page:    var(--navy);
+  --surface-card:    var(--navy-90);   /* elevated panel, one step up from the page */
+  --surface-sunken:  var(--code-bg);
+  --surface-inverse: var(--mist);      /* an inverse block is now light */
+
+  /* Lines */
+  --border-hairline: rgba(232, 238, 244, 0.14);
+  --border-strong:   var(--mist);
+
+  /* Feedback */
+  --info: var(--mist);
+}

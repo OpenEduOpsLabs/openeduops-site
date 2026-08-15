@@ -1,0 +1,79 @@
+/* OpenEduOps — Webfonts
+   All three families are SELF-HOSTED (user-supplied .ttf in assets/fonts/).
+   Open-source (OFL / Apache 2.0), embeddable, free for commercial use. */
+
+/* ---- Inter · body/narration/captions/documents (400 / 500 / 600) ---- */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../assets/fonts/Inter-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../assets/fonts/Inter-Medium.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('../assets/fonts/Inter-SemiBold.ttf') format('truetype');
+}
+
+/* ---- Space Grotesk · display (500 / 600 / 700; 400 included) ---- */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../assets/fonts/SpaceGrotesk-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../assets/fonts/SpaceGrotesk-Medium.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('../assets/fonts/SpaceGrotesk-SemiBold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../assets/fonts/SpaceGrotesk-Bold.ttf') format('truetype');
+}
+
+/* ---- JetBrains Mono · code/terminal (400 / 500 / 700) ---- */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../assets/fonts/JetBrainsMono-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../assets/fonts/JetBrainsMono-Medium.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../assets/fonts/JetBrainsMono-Bold.ttf') format('truetype');
+}

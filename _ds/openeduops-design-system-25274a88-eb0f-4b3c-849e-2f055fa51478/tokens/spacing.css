@@ -1,0 +1,41 @@
+/* OpenEduOps — Spacing, radii, shadows, layout
+   The aesthetic of good documentation: structured, legible, unhurried. */
+
+:root {
+  /* ---- Spacing scale (4px base) ---- */
+  --space-1:  0.25rem;  /*  4px */
+  --space-2:  0.5rem;   /*  8px */
+  --space-3:  0.75rem;  /* 12px */
+  --space-4:  1rem;     /* 16px */
+  --space-5:  1.5rem;   /* 24px */
+  --space-6:  2rem;     /* 32px */
+  --space-7:  3rem;     /* 48px */
+  --space-8:  4rem;     /* 64px */
+
+  /* ---- Radii — rounded but restrained (echoes the soft geometric mark) ---- */
+  --radius-sm:   6px;    /* chips, tags, inputs */
+  --radius-md:   10px;   /* buttons, cards */
+  --radius-lg:   16px;   /* panels, code blocks */
+  --radius-pill: 999px;  /* tag chips, watermark-style pills */
+
+  /* ---- Borders ---- */
+  --bw-hairline: 1px;
+  --bw-strong:   2px;
+  --bw-bar:      3px;    /* orange node-bar accents (lower-thirds) */
+
+  /* ---- Shadows — soft, never heavy; no stacked glows ---- */
+  --shadow-sm: 0 1px 2px rgba(11,31,58,0.06), 0 1px 3px rgba(11,31,58,0.08);
+  --shadow-md: 0 4px 12px rgba(11,31,58,0.10);
+  --shadow-lg: 0 12px 32px rgba(11,31,58,0.14);
+  --shadow-code: 0 8px 24px rgba(7,23,44,0.35);
+
+  /* ---- Motion — static, calm; subtle fades only ---- */
+  --ease-standard: cubic-bezier(0.2, 0, 0.2, 1); /* @kind other */
+  --dur-fast: 120ms; /* @kind other */
+  --dur-base: 200ms; /* @kind other */
+
+  /* ---- Layout ---- */
+  --safe-inset: 5%;          /* title-safe area @kind other */
+  --maxw-prose: 68ch;        /* readable measure @kind other */
+  --maxw-page:  1200px; /* @kind spacing */
+}

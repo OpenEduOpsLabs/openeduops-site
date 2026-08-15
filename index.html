@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>OpenEduOps — Build it. Secure it. Understand it.</title>
+<meta name="description" content="Practical, production-aware tutorials for building, securing, and operating open-source learning platforms.">
+<link rel="canonical" href="https://openeduops.com/">
+<meta name="theme-color" content="#0B1F3A">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://openeduops.com/">
+<meta property="og:site_name" content="OpenEduOps">
+<meta property="og:title" content="OpenEduOps — Build it. Secure it. Understand it.">
+<meta property="og:description" content="Practical, production-aware tutorials for building, securing, and operating open-source learning platforms.">
+<meta property="og:image" content="YOUR_OG_IMAGE">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="OpenEduOps — Build it. Secure it. Understand it.">
+<meta name="twitter:description" content="Practical, production-aware tutorials for building, securing, and operating open-source learning platforms.">
+<meta name="twitter:image" content="YOUR_OG_IMAGE">
+
+<link rel="icon" type="image/png" href="assets/logo/favicon-512.png">
+<link rel="apple-touch-icon" href="assets/logo/apple-touch-icon.png">
+
+<link rel="preload" href="assets/fonts/SpaceGrotesk-Bold.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="assets/fonts/Inter-Regular.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="styles.css">
+
+<!-- Progressive enhancement flag: JS-only styles (collapsed mobile nav, scroll reveals) hang off .js -->
+<script>document.documentElement.classList.add('js');</script>
+</head>
+
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header" id="site-header">
+  <div class="shell header-inner">
+    <a class="brand" href="#top" aria-label="OpenEduOps — home">
+      <img class="brand-mark" src="assets/logo/openeduops-mark-dark.png" alt="" width="1849" height="664">
+      <span class="brand-word">OpenEduOps</span>
+    </a>
+
+    <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
+      <span class="nav-toggle-bars" aria-hidden="true"></span>
+      <span class="nav-toggle-text">Menu</span>
+    </button>
+
+    <nav class="primary-nav" id="primary-nav" aria-label="Primary">
+      <ul class="nav-list">
+        <li><a href="#pillars">Tutorials</a></li>
+        <li><a href="YOUR_GITHUB_URL">Guides</a></li>
+        <li><a href="#series">Moodle Series</a></li>
+      </ul>
+      <ul class="nav-list nav-list-external">
+        <li><a href="YOUR_YOUTUBE_URL">YouTube</a></li>
+        <li><a href="YOUR_GITHUB_URL">GitHub</a></li>
+        <li><a href="YOUR_X_URL">X</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="top">
+    <div class="shell hero-inner">
+
+      <div class="hero-copy">
+        <p class="eyebrow eyebrow-on-dark">Self-hosted open learning</p>
+        <h1 class="hero-title">Build it.<br>Secure it.<br>Understand it.</h1>
+        <p class="hero-lede">Open-source LMS platforms, from server to production.</p>
+        <p class="hero-text">OpenEduOps provides practical tutorials for building and operating open-source
+          learning platforms, connecting the LMS with the infrastructure, security, automation, and
+          operations behind it.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="YOUR_YOUTUBE_URL">Watch the Tutorials</a>
+          <a class="btn btn-ghost" href="YOUR_GITHUB_URL">Technical Guides</a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <!-- The stack the LMS actually runs on: platform → infrastructure → security → operations -->
+        <svg class="stack" viewBox="0 0 540 470" role="img" aria-labelledby="stack-title stack-desc">
+          <title id="stack-title">The system beneath a learning platform</title>
+          <desc id="stack-desc">A learning platform layer sitting on a web and application layer, a data
+            and storage layer, and a server and network layer. The lower three layers sit inside a
+            security boundary, and the whole stack connects to backup, monitoring, and automation.</desc>
+
+          <!-- spine + traces -->
+          <g class="stack-traces" fill="none" stroke="#4a5a72" stroke-width="2">
+            <path d="M40 46 V 402" />
+            <path d="M40 46 H 92" />
+            <path d="M40 152 H 92" />
+            <path d="M40 258 H 92" />
+            <path d="M40 344 H 92" />
+            <path d="M40 402 H 200 M280 402 H 340 M420 402 H 470" />
+          </g>
+          <path class="stack-signal" d="M40 46 V 402" fill="none" stroke="#FF6B35" stroke-width="2"
+                stroke-linecap="round" stroke-dasharray="26 330" />
+
+          <!-- security boundary around infrastructure layers -->
+          <g class="stack-boundary">
+            <rect x="20" y="118" width="500" height="260" rx="16" fill="none"
+                  stroke="#7d8a9c" stroke-width="1.5" stroke-dasharray="3 7" />
+            <text class="stack-tag" x="520" y="108" text-anchor="end">SECURITY BOUNDARY</text>
+          </g>
+
+          <!-- layers -->
+          <g class="layer" data-layer="1">
+            <rect x="92" y="10" width="420" height="72" rx="10" />
+            <text class="layer-name" x="116" y="44">LEARNING PLATFORM</text>
+            <text class="layer-detail" x="116" y="66">Moodle · courses · users · grades</text>
+          </g>
+          <g class="layer" data-layer="2">
+            <rect x="92" y="116" width="420" height="72" rx="10" />
+            <text class="layer-name" x="116" y="150">WEB + APPLICATION</text>
+            <text class="layer-detail" x="116" y="172">Web server · PHP · HTTPS · email</text>
+          </g>
+          <g class="layer" data-layer="3">
+            <rect x="92" y="222" width="420" height="72" rx="10" />
+            <text class="layer-name" x="116" y="256">DATA + STORAGE</text>
+            <text class="layer-detail" x="116" y="278">Database · files · cache</text>
+          </g>
+          <g class="layer" data-layer="4">
+            <rect x="92" y="308" width="420" height="56" rx="10" />
+            <text class="layer-name" x="116" y="342">SERVER + NETWORK</text>
+          </g>
+
+          <!-- nodes on the spine -->
+          <g class="stack-nodes">
+            <circle cx="40" cy="46" r="7" />
+            <circle cx="40" cy="152" r="7" />
+            <circle cx="40" cy="258" r="7" />
+            <circle cx="40" cy="344" r="7" />
+          </g>
+
+          <!-- operations rail -->
+          <g class="ops">
+            <circle cx="212" cy="402" r="6" />
+            <circle cx="352" cy="402" r="6" />
+            <circle cx="482" cy="402" r="6" />
+            <text class="ops-label" x="212" y="434" text-anchor="middle">BACKUP</text>
+            <text class="ops-label" x="352" y="434" text-anchor="middle">MONITOR</text>
+            <text class="ops-label" x="482" y="434" text-anchor="middle">AUTOMATE</text>
+          </g>
+        </svg>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ BUILD / SECURE / OPERATE ============ -->
+  <section class="section pillars" id="pillars">
+    <div class="shell">
+      <header class="section-head reveal">
+        <p class="eyebrow">What the tutorials cover</p>
+        <h2 class="section-title">One platform, three responsibilities.</h2>
+        <p class="section-lede">Build, secure, and operate are not separate subjects. They are the same
+          system seen at three moments in its life.</p>
+      </header>
+
+      <ol class="pillar-track">
+        <li class="pillar reveal">
+          <p class="pillar-index">01</p>
+          <h3 class="pillar-name">Build</h3>
+          <p class="pillar-claim">Build the platform from the infrastructure up.</p>
+          <p class="pillar-text">Installation, web stack, databases, DNS, HTTPS, email, and the services the
+            LMS depends on.</p>
+          <ul class="tag-row">
+            <li>install</li><li>web stack</li><li>database</li><li>DNS</li><li>HTTPS</li><li>email</li>
+          </ul>
+        </li>
+        <li class="pillar reveal">
+          <p class="pillar-index">02</p>
+          <h3 class="pillar-name">Secure</h3>
+          <p class="pillar-claim">Protect the system without losing sight of how it works.</p>
+          <p class="pillar-text">Access control, firewalling, service exposure, TLS, hardening, permissions,
+            and recovery before risky changes.</p>
+          <ul class="tag-row">
+            <li>access</li><li>firewall</li><li>exposure</li><li>TLS</li><li>permissions</li><li>rollback</li>
+          </ul>
+        </li>
+        <li class="pillar reveal">
+          <p class="pillar-index">03</p>
+          <h3 class="pillar-name">Operate</h3>
+          <p class="pillar-claim">Keep the platform observable, maintainable, and recoverable.</p>
+          <p class="pillar-text">Caching, backups, monitoring, automation, scheduling, troubleshooting, and
+            operational verification.</p>
+          <ul class="tag-row">
+            <li>caching</li><li>backups</li><li>monitoring</li><li>cron</li><li>logs</li><li>recovery</li>
+          </ul>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ FEATURED MOODLE SERIES ============ -->
+  <section class="section series" id="series">
+    <div class="shell series-inner">
+
+      <div class="series-copy reveal">
+        <p class="eyebrow">Featured series</p>
+        <h2 class="section-title">Moodle Foundation Series</h2>
+        <p class="section-lede">Build a Moodle environment step by step, from installation and public hosting
+          through HTTPS, security, backups, caching, email, monitoring, and day-to-day operations.</p>
+        <p class="series-note">One installation, followed all the way through — each stage leaves the
+          environment more complete than the last.</p>
+        <a class="btn btn-primary" href="YOUR_MOODLE_PLAYLIST_URL">Explore the Moodle Series</a>
+      </div>
+
+      <ol class="progression reveal">
+        <li class="step">
+          <span class="step-label">Install</span>
+          <span class="step-text">A working Moodle on a Linux server you control.</span>
+        </li>
+        <li class="step">
+          <span class="step-label">Connect</span>
+          <span class="step-text">Domain, web server, and email reaching the outside world.</span>
+        </li>
+        <li class="step">
+          <span class="step-label">Secure</span>
+          <span class="step-text">HTTPS, firewalling, and a smaller exposed surface.</span>
+        </li>
+        <li class="step">
+          <span class="step-label">Protect</span>
+          <span class="step-text">Backups and a restore you have actually tested.</span>
+        </li>
+        <li class="step">
+          <span class="step-label">Optimize</span>
+          <span class="step-text">Caching and scheduled tasks doing their job.</span>
+        </li>
+        <li class="step">
+          <span class="step-label">Monitor</span>
+          <span class="step-text">Logs and checks that tell you when something changes.</span>
+        </li>
+      </ol>
+
+    </div>
+  </section>
+
+  <!-- ============ PHILOSOPHY ============ -->
+  <section class="section approach" id="approach">
+    <div class="shell">
+      <header class="section-head reveal">
+        <p class="eyebrow">The method</p>
+        <h2 class="section-title">More than commands.</h2>
+        <p class="section-lede">OpenEduOps tutorials show the change, explain why it matters, verify the
+          result, and make the operational boundaries visible.</p>
+      </header>
+
+      <div class="principles">
+        <article class="principle reveal">
+          <h3>Understand the change</h3>
+          <p>Know what a command or configuration actually affects.</p>
+        </article>
+        <article class="principle reveal">
+          <h3>Verify the result</h3>
+          <p>Do not treat successful execution alone as proof.</p>
+        </article>
+        <article class="principle reveal">
+          <h3>Prepare for failure</h3>
+          <p>Backups, rollback, and recovery are part of the procedure.</p>
+        </article>
+        <article class="principle reveal">
+          <h3>Keep the boundaries clear</h3>
+          <p>A working lab, public demonstration system, and production environment are not the same thing.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FINAL CTA ============ -->
+  <section class="section final-cta" id="start">
+    <div class="shell final-inner">
+      <h2 class="final-title">Start building.</h2>
+      <p class="final-text">Follow OpenEduOps on YouTube for practical open-source LMS infrastructure
+        tutorials.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="YOUR_YOUTUBE_URL">Watch OpenEduOps</a>
+        <a class="btn btn-ghost" href="YOUR_GITHUB_URL">Browse Technical Guides</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="shell footer-inner">
+    <div class="footer-brand">
+      <img src="assets/logo/openeduops-lockup-dark.png" alt="OpenEduOps" width="1849" height="944">
+      <p class="footer-tagline">Build it. Secure it. Understand it.</p>
+    </div>
+    <nav class="footer-nav" aria-label="Footer">
+      <ul>
+        <li><a href="YOUR_YOUTUBE_URL">YouTube</a></li>
+        <li><a href="YOUR_GITHUB_URL">GitHub</a></li>
+        <li><a href="YOUR_X_URL">X</a></li>
+      </ul>
+    </nav>
+    <p class="footer-legal">© 2026 OpenEduOps</p>
+  </div>
+</footer>
+
+<script src="script.js" defer></script>
+</body>
+</html>
