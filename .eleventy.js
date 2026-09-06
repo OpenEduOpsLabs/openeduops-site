@@ -21,6 +21,11 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ CNAME: "CNAME" });
   eleventyConfig.addPassthroughCopy({ ".nojekyll": ".nojekyll" });
 
+  // /favicon.ico is the well-known path browsers and other tooling request
+  // when they do not read the <link rel="icon"> tag. Same artwork as
+  // assets/logo/favicon-512.png; the declared PNG remains the primary icon.
+  eleventyConfig.addPassthroughCopy({ "favicon.ico": "favicon.ico" });
+
   // Legacy passthrough assets. Nothing on the site links to these, and they are
   // excluded from the sitemap, but both paths are already reachable on the live
   // domain — so they are copied through for this release to avoid breaking
