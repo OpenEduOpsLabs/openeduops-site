@@ -54,7 +54,7 @@ const SITE_URL = "https://openeduops.com";
 
 /* ------------------------------------------------- 1. GitHub Pages files - */
 console.log("\nGitHub Pages output");
-for (const file of ["robots.txt", "sitemap.xml", "404.html", "CNAME", ".nojekyll"]) {
+for (const file of ["robots.txt", "sitemap.xml", "404.html", "CNAME", ".nojekyll", "favicon.ico"]) {
   check(`${file} present in _site/`, existsSync(join(site, file)));
 }
 check("CNAME still names the custom domain", (read("CNAME") || "").trim() === "openeduops.com");
