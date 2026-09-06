@@ -1,0 +1,106 @@
+---
+layout: layouts/base.njk
+---
+{#
+  Priority watch page. One video is the principal content of the page.
+
+  Visible order is fixed: breadcrumbs, platform and step metadata, the h1,
+  the summary, the player, what you will accomplish, the environment covered,
+  the companion guide, the scope note, previous/next, then the playlist.
+#}
+{%- set platform = site.platforms | findBy("slug", tutorial.platform_slug) %}
+{%- set crumbs = [
+      { label: "Home", url: "/" },
+      { label: "Tutorials", url: "/tutorials/" },
+      { label: platform.name, url: platform.url },
+      { label: heading, url: page.url }
+    ] %}
+
+<article>
+  <div class="page-head">
+    <div class="shell">
+      {%- include "components/breadcrumbs.njk" %}
+      <div class="page-head-inner">
+        <p class="meta-row meta-row-on-dark">
+          <span class="badge badge-{{ tutorial.platform_slug }} badge-on-dark">{{ tutorial.platform }}</span>
+          <span>{{ platform.series }}</span>
+          <span>{{ tutorial.stepLabel }}</span>
+          <span>{{ tutorial.responsibility }}</span>
+        </p>
+        <h1 class="page-title u-mt-5">{{ heading }}</h1>
+        <p class="page-lede">{{ tutorial.summary }}</p>
+        <p class="meta-row meta-row-on-dark u-mt-6">
+          <time datetime="{{ tutorial.upload_date | isoDate }}">Published {{ tutorial.upload_date | humanDate }}</time>
+          <span>{{ tutorial.display_duration }}</span>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="watch">
+    <div class="shell">
+      <div class="watch-inner">
+
+        <div class="video-frame">
+          <iframe
+            src="{{ tutorial.embed_url }}"
+            title="{{ tutorial.title }}"
+            width="1280" height="720"
+            loading="lazy"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+        </div>
+
+        <div class="watch-blocks">
+          <section class="watch-block">
+            <h2>What you will accomplish</h2>
+            <p>{{ tutorial.outcome }}</p>
+          </section>
+          <section class="watch-block watch-block-env">
+            <h2>Environment covered</h2>
+            <p>{{ tutorial.environment }}</p>
+          </section>
+        </div>
+
+        <div class="watch-guide">
+          <a class="btn btn-primary" href="{{ tutorial.guide_url }}"
+             data-event="companion_guide_open" rel="noopener">Open the companion guide</a>
+          <p class="watch-guide-note">The exact commands for this tutorial are maintained as a GitHub Gist, which stays the canonical command reference.</p>
+        </div>
+
+        <p class="scope-note watch-scope">This is practical lab and tutorial guidance. A working lab, a public demonstration system, and a production environment are not the same thing: check capacity, data protection, change control, and recovery requirements before applying any of it to a system that people depend on.</p>
+
+        {%- if tutorial.previous or tutorial.next %}
+        <nav class="watch-pager" aria-label="Series">
+          {%- if tutorial.previous %}
+          <a class="watch-pager-link watch-pager-prev" href="{{ tutorial.previous.url }}"
+             data-event="series_continue"
+             {%- if tutorial.previous.external %} rel="noopener"{% endif %}>
+            <span class="watch-pager-label">{{ tutorial.previous.label }}</span>
+            <span class="watch-pager-title">{{ tutorial.previous.title }}</span>
+          </a>
+          {%- endif %}
+          {%- if tutorial.next %}
+          <a class="watch-pager-link watch-pager-next" href="{{ tutorial.next.url }}"
+             data-event="series_continue"
+             {%- if tutorial.next.external %} rel="noopener"{% endif %}>
+            <span class="watch-pager-label">{{ tutorial.next.label }}</span>
+            <span class="watch-pager-title">{{ tutorial.next.title }}</span>
+          </a>
+          {%- endif %}
+        </nav>
+        {%- endif %}
+
+        <p class="watch-playlist">
+          <a class="action action-external" href="{{ platform.playlistUrl }}"
+             data-event="playlist_open" rel="noopener">Open the {{ platform.series }} playlist on YouTube</a>
+        </p>
+
+      </div>
+    </div>
+  </div>
+</article>
+
+<script type="application/ld+json">{{ crumbs | breadcrumbSchema(site.url) | jsonld | safe }}</script>
+<script type="application/ld+json">{{ tutorial | videoSchema | jsonld | safe }}</script>

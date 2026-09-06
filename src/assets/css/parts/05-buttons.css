@@ -1,0 +1,48 @@
+/* -------------------------------------------------------------- buttons -- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 48px; padding: 0 1.5rem;
+  font-family: var(--font-display); font-size: 1rem; font-weight: 600;
+  border-radius: var(--radius-md); text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background-color var(--dur-fast) var(--ease-standard),
+              border-color var(--dur-fast) var(--ease-standard),
+              transform var(--dur-fast) var(--ease-standard);
+}
+.btn-primary { background: var(--orange); color: var(--text-on-accent); }
+.btn-primary:hover { background: #f0561f; }
+.btn-primary:active { background: #dd4d19; transform: translateY(1px); }
+
+.btn-ghost { background: transparent; color: var(--navy); border-color: var(--navy-30); }
+.btn-ghost:hover { background: var(--mist); border-color: var(--navy-70); }
+.btn-ghost:active { transform: translateY(1px); }
+
+
+/* Ghost button on navy grounds */
+.hero .btn-ghost, .final-cta .btn-ghost, .page-head .btn-ghost {
+  color: var(--mist); border-color: rgba(232,238,244,.32);
+}
+.hero .btn-ghost:hover, .final-cta .btn-ghost:hover, .page-head .btn-ghost:hover {
+  background: rgba(232,238,244,.08); border-color: var(--mist);
+}
+
+.cta-row { display: flex; flex-wrap: wrap; gap: var(--space-4); }
+
+/* Inline text-weight action used inside cards and rows. */
+.action {
+  display: inline-flex; align-items: center; gap: .5rem;
+  min-height: var(--tap);
+  font-family: var(--font-display); font-weight: 600; font-size: .9375rem;
+  color: var(--navy); text-decoration: none;
+}
+.action::after {
+  content: ""; width: .45em; height: .45em;
+  border-top: 2px solid var(--orange);
+  border-right: 2px solid var(--orange);
+  transform: rotate(45deg);
+  transition: transform var(--dur-fast) var(--ease-standard);
+}
+.action:hover::after { transform: rotate(45deg) translate(2px, -2px); }
+.action-external::after { transform: rotate(-45deg); }
+.action-external:hover::after { transform: rotate(-45deg) translate(2px, -2px); }

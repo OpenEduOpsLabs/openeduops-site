@@ -1,0 +1,38 @@
+---
+permalink: /sitemap.xml
+eleventyExcludeFromCollections: true
+---
+{#-
+  Canonical public HTML pages only.
+
+  No filtered-query URLs, no external YouTube or Gist URLs, no unreleased
+  content, and no 404 page. `lastmod` is set only where a real source value
+  exists: the publication date of the newest tutorial the page renders. /about/
+  has no such source, so it carries no lastmod rather than a build timestamp.
+-#}
+{%- set newest = catalogue.all[0].upload_date -%}
+{%- set pages = [
+  { url: "/",           lastmod: newest },
+  { url: "/tutorials/", lastmod: newest },
+  { url: "/moodle/",    lastmod: catalogue.newestByPlatform.moodle },
+  { url: "/open-edx/",  lastmod: catalogue.newestByPlatform["open-edx"] },
+  { url: "/guides/",    lastmod: newest },
+  { url: "/about/",     lastmod: null }
+] -%}
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{%- for entry in pages %}
+  <url>
+    <loc>{{ site.url }}{{ entry.url }}</loc>
+    {%- if entry.lastmod %}
+    <lastmod>{{ entry.lastmod | isoDate }}</lastmod>
+    {%- endif %}
+  </url>
+{%- endfor %}
+{%- for tutorial in catalogue.detailPages %}
+  <url>
+    <loc>{{ site.url }}{{ tutorial.path }}</loc>
+    <lastmod>{{ tutorial.upload_date | isoDate }}</lastmod>
+  </url>
+{%- endfor %}
+</urlset>

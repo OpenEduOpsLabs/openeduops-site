@@ -1,0 +1,70 @@
+/* ------------------------------------------------------------ catalogue -
+   The filter bar is an enhancement: it only appears once the JS flag is set,
+   so nobody is offered a control that cannot work. The card list underneath
+   is server-rendered and complete either way.
+   ------------------------------------------------------------------------ */
+.catalogue-filters { display: none; }
+.js .catalogue-filters { display: block; }
+
+.filter-bar {
+  display: flex; flex-wrap: wrap; align-items: flex-start;
+  gap: var(--space-5) clamp(1.5rem, 4vw, 3rem);
+  padding-bottom: var(--space-6);
+  border-bottom: 1px solid var(--border-hairline);
+  margin-bottom: var(--space-6);
+}
+.filter-group { border: 0; margin: 0; padding: 0; min-width: 0; }
+.filter-group legend {
+  padding: 0; margin-bottom: var(--space-3);
+  font-family: var(--font-mono); font-size: .75rem; font-weight: 500;
+  letter-spacing: var(--ls-label); text-transform: uppercase; color: var(--text-meta);
+}
+.filter-options { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+
+.filter-btn {
+  display: inline-flex; align-items: center; gap: .5rem;
+  min-height: var(--tap); padding: 0 .875rem;
+  background: var(--white); color: var(--navy);
+  border: 1px solid var(--navy-30); border-radius: var(--radius-pill);
+  font-family: var(--font-mono); font-size: .8125rem; letter-spacing: .04em;
+  cursor: pointer;
+  transition: background-color var(--dur-fast) var(--ease-standard),
+              border-color var(--dur-fast) var(--ease-standard);
+}
+.filter-btn:hover { background: var(--mist); border-color: var(--navy-70); }
+/* Selected state is carried by the tick mark and the border weight, not colour alone. */
+.filter-btn::before {
+  content: ""; width: 8px; height: 8px; border-radius: 50%;
+  border: 1.5px solid var(--navy-30); background: transparent; flex: none;
+}
+.filter-btn[aria-pressed="true"] {
+  background: var(--navy); color: var(--mist); border-color: var(--navy);
+}
+.filter-btn[aria-pressed="true"]::before { background: var(--orange); border-color: var(--orange); }
+.filter-btn[aria-pressed="true"]:hover { background: var(--navy-90); border-color: var(--navy-90); }
+
+.filter-actions {
+  display: flex; align-items: center; gap: var(--space-4);
+  margin-left: auto; align-self: flex-end;
+}
+.filter-clear {
+  min-height: var(--tap); padding: 0 .875rem;
+  background: none; border: 1px solid transparent; border-radius: var(--radius-sm);
+  color: var(--navy); font-family: var(--font-display); font-weight: 600; font-size: .9375rem;
+  cursor: pointer;
+}
+.filter-clear:hover { background: var(--mist); border-color: var(--border-hairline); }
+
+.catalogue-count {
+  font-family: var(--font-mono); font-size: .8125rem;
+  color: var(--text-meta); margin-bottom: var(--space-6);
+}
+
+/* Shown only when a filter combination matches nothing. */
+.catalogue-empty {
+  border: 1px dashed var(--navy-30);
+  border-radius: var(--radius-md);
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  color: var(--text-muted);
+}
+.catalogue-empty .filter-clear { margin-top: var(--space-4); border-color: var(--navy-30); }

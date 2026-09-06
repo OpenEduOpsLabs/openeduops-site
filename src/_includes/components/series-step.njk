@@ -1,0 +1,26 @@
+{#
+  One row of a platform learning path. Expects `tutorial`.
+  Rendered inside an <ol class="series-rail">: the number is the list order,
+  the node and trace come from the brand's node-and-trace motif, and the row
+  wraps rather than scrolling sideways on narrow screens.
+#}
+<li class="series-step">
+  <p class="series-step-index">{{ tutorial.stepLabel }} &middot; {{ tutorial.responsibility }}</p>
+
+  <h3>
+    <a href="{{ tutorial.destination.url }}"
+       data-event="{{ tutorial.destination.event }}"
+       {%- if tutorial.destination.external %} rel="noopener"{% endif %}>{{ tutorial.title }}<span class="visually-hidden"> — {{ tutorial.destination.label }}</span></a>
+  </h3>
+
+  <p class="series-step-outcome">{{ tutorial.outcome }}</p>
+
+  <p class="meta-row">
+    <span>{{ tutorial.display_duration }}</span>
+    <span>{{ tutorial.environment }}</span>
+  </p>
+
+  <p class="series-step-action">
+    <span class="action{% if tutorial.destination.external %} action-external{% endif %}" aria-hidden="true">{{ tutorial.destination.label }}</span>
+  </p>
+</li>

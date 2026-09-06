@@ -1,0 +1,17 @@
+{#
+  Visible breadcrumbs. The matching BreadcrumbList JSON-LD is generated from
+  the same `crumbs` list in the layout, so the two can never disagree.
+#}
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <ol>
+    {%- for crumb in crumbs %}
+      <li>
+        {%- if loop.last %}
+          <span aria-current="page">{{ crumb.label }}</span>
+        {%- else %}
+          <a href="{{ crumb.url }}">{{ crumb.label }}</a>
+        {%- endif %}
+      </li>
+    {%- endfor %}
+  </ol>
+</nav>

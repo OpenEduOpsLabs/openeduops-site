@@ -1,0 +1,64 @@
+/* ---------------------------------------------------------------- tokens -
+   Palette, type, spacing and motion. Taken from the OpenEduOps Design System
+   (60/20/10/10 colour proportion, Space Grotesk / Inter / JetBrains Mono).
+   ------------------------------------------------------------------------ */
+:root {
+  /* Palette */
+  --navy:        #0B1F3A;
+  --navy-90:     #233650;
+  --navy-70:     #4A5A72;
+  --navy-50:     #7d8a9c;
+  --navy-30:     #b3bcca;
+  --navy-15:     #d6dde6;
+  --orange:      #FF6B35;
+  --teal:        #00C9A7;
+  --mist:        #E8EEF4;
+  --white:       #FFFFFF;
+
+  /* Semantic.
+     --text-meta is the approved token for small normal text on light grounds.
+     --navy-50 is a *shape* colour here: it never carries normal-size copy,
+     because #7d8a9c on white is only ~3.5:1. */
+  --text-body:         var(--navy);
+  --text-muted:        var(--navy-70);
+  --text-meta:         var(--navy-70);
+  --text-on-dark:      var(--mist);
+  --text-meta-on-dark: var(--navy-30);
+  --text-on-accent:    var(--navy);
+  --surface-page:      var(--white);
+  --surface-sunken:    var(--mist);
+  --surface-inverse:   var(--navy);
+  --border-hairline:   var(--navy-15);
+
+  /* Type */
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-body:    'Inter', system-ui, sans-serif;
+  --font-mono:    'JetBrains Mono', ui-monospace, monospace;
+  --ls-label: 0.12em;
+
+  /* Space, radius, shadow, motion */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
+  --shadow-sm: 0 1px 2px rgba(11,31,58,.06), 0 1px 3px rgba(11,31,58,.08);
+  --shadow-md: 0 4px 12px rgba(11,31,58,.10);
+  --ease-standard: cubic-bezier(.2, 0, .2, 1);
+  --dur-fast: 120ms;
+  --dur-base: 200ms;
+
+  /* Layout */
+  --maxw-page: 1200px;
+  --maxw-prose: 68ch;
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+  --header-h: 68px;
+  --tap: 44px;
+}

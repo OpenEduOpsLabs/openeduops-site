@@ -1,0 +1,11 @@
+{#
+  Platform / series card. Expects `platform` (a record from site.platforms).
+  Both cards use the same markup, the same card size and the same heading
+  level, so neither platform outranks the other.
+#}
+<li class="platform-card platform-card-{{ platform.slug }}">
+  <h3>{{ platform.series }}</h3>
+  <p class="status{% if platform.statusKind == 'in-progress' %} status-in-progress{% endif %}">{{ platform.status }}</p>
+  <p>{{ platform.description }}</p>
+  <a class="btn btn-ghost" href="{{ platform.url }}" data-event="series_continue">{{ platform.cta }}</a>
+</li>

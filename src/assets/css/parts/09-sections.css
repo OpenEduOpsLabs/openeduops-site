@@ -1,0 +1,122 @@
+/* ------------------------------------------------- build/secure/operate - */
+.pillar-track {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  position: relative;
+}
+/* the shared trace the three pillars sit on */
+.pillar-track::before {
+  content: ""; position: absolute; left: 0; right: 0; top: 11px; height: 1px;
+  background: var(--border-hairline);
+}
+.pillar { position: relative; padding-top: 3.25rem; display: flex; flex-direction: column; }
+.pillar::before {
+  content: ""; position: absolute; left: 0; top: 5px; width: 13px; height: 13px;
+  border-radius: 50%; background: var(--orange);
+}
+.pillar-index {
+  position: absolute; top: 0; left: 1.75rem;
+  font-family: var(--font-mono); font-size: .75rem; font-weight: 500;
+  letter-spacing: var(--ls-label); color: var(--text-meta);
+  line-height: 1.4;
+}
+.pillar-name {
+  font-size: clamp(1.5rem, 2.2vw, 1.875rem); font-weight: 700; letter-spacing: -.01em;
+}
+.pillar-claim {
+  margin-top: var(--space-3);
+  font-family: var(--font-display); font-weight: 500; font-size: 1.0625rem;
+  color: var(--navy);
+}
+.pillar-text { margin-top: var(--space-3); color: var(--text-muted); font-size: .9375rem; }
+.pillar .action { margin-top: var(--space-4); align-self: flex-start; }
+.tag-row {
+  display: flex; flex-wrap: wrap; gap: var(--space-2);
+  margin-top: var(--space-5);
+}
+.tag-row li {
+  font-family: var(--font-mono); font-size: .75rem; color: var(--text-meta);
+  background: var(--mist); border-radius: var(--radius-pill);
+  padding: .3125rem .625rem;
+}
+.section-sunken .tag-row li { background: var(--white); }
+
+/* --------------------------------------------------------- the method --- */
+.principles {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--border-hairline);
+  border-left: 1px solid var(--border-hairline);
+}
+.principle {
+  border-right: 1px solid var(--border-hairline);
+  border-bottom: 1px solid var(--border-hairline);
+  padding: clamp(1.75rem, 3vw, 2.5rem);
+}
+.principle h3 {
+  font-size: 1.25rem; font-weight: 600;
+  padding-left: 1.25rem; position: relative;
+}
+.principle h3::before {
+  content: ""; position: absolute; left: 0; top: .5em;
+  width: 9px; height: 9px; border-radius: 50%; background: var(--teal);
+}
+.principle p { margin-top: var(--space-3); color: var(--text-muted); padding-left: 1.25rem; }
+
+/* ---------------------------------------------------------- final cta --- */
+.final-cta {
+  background:
+    radial-gradient(100% 120% at 20% 0%, #14304f 0%, rgba(11,31,58,0) 62%),
+    var(--navy);
+  color: var(--text-on-dark);
+}
+.final-inner { max-width: 44rem; }
+.final-title {
+  font-size: clamp(2.25rem, 4.6vw, 3.25rem); font-weight: 700;
+  letter-spacing: -.02em; color: var(--white);
+}
+.final-text { margin-top: var(--space-5); color: var(--text-meta-on-dark); max-width: 48ch; }
+.final-cta .cta-row { margin-top: var(--space-7); }
+
+/* -------------------------------------------------------------- prose --- */
+.prose { max-width: var(--maxw-prose); }
+.prose > * + * { margin-top: var(--space-5); }
+.prose h2 { margin-top: var(--space-8); font-size: clamp(1.375rem, 2.2vw, 1.75rem); font-weight: 700; }
+.prose h3 { margin-top: var(--space-7); font-size: 1.1875rem; font-weight: 600; }
+.prose p { color: var(--text-muted); }
+.prose ul { display: grid; gap: var(--space-3); }
+.prose ul li { position: relative; padding-left: 1.5rem; color: var(--text-muted); }
+.prose ul li::before {
+  content: ""; position: absolute; left: 0; top: .6em;
+  width: 8px; height: 8px; border-radius: 50%; background: var(--teal);
+}
+.prose strong { color: var(--navy); font-weight: 600; }
+
+/* Scope note: the production boundary, stated plainly. */
+.scope-note {
+  border-left: 3px solid var(--orange);
+  padding: var(--space-1) 0 var(--space-1) var(--space-5);
+  color: var(--text-muted);
+  font-size: .9375rem;
+  max-width: 62ch;
+}
+
+/* ----------------------------------------------------------- not found -- */
+.notfound-code {
+  font-family: var(--font-mono); font-size: .875rem;
+  letter-spacing: var(--ls-label); color: var(--text-meta-on-dark);
+}
+.recovery-list {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+.recovery-list li {
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+}
+.recovery-list h2 { font-size: 1.0625rem; font-weight: 600; }
+.recovery-list p { margin-top: var(--space-2); font-size: .9375rem; color: var(--text-muted); }
+.recovery-list .action { margin-top: var(--space-3); }

@@ -1,0 +1,128 @@
+/* ==========================================================================
+   Responsive — tablet
+   ========================================================================= */
+@media (max-width: 1100px) {
+  .hero-inner { grid-template-columns: 1fr; gap: clamp(2.5rem, 6vw, 4rem); }
+  .hero-copy { max-width: 40rem; }
+  .hero-visual { max-width: 620px; }
+}
+
+@media (max-width: 900px) {
+  .pillar-track { grid-template-columns: 1fr; gap: 0; }
+  /* the trace turns vertical: pillars stack along one line */
+  .pillar-track::before { left: 6px; right: auto; top: 10px; bottom: 10px; width: 1px; height: auto; }
+  .pillar { padding-top: 0; padding-left: 2.5rem; padding-block: var(--space-6); }
+  .pillar + .pillar { border-top: 1px solid var(--border-hairline); }
+  .pillar::before { top: 2.4rem; }
+  .pillar-index { position: static; margin-bottom: var(--space-2); }
+
+  .platform-grid, .starts { grid-template-columns: 1fr; }
+
+  .guide-row { grid-template-columns: 1fr; }
+  .guide-row-actions { justify-content: flex-start; }
+}
+
+/* ==========================================================================
+   Responsive — mobile navigation
+   ========================================================================= */
+@media (max-width: 860px) {
+  .nav-toggle {
+    display: inline-flex; align-items: center; gap: .5rem;
+    min-height: var(--tap); min-width: var(--tap); padding: 0 .75rem;
+    background: transparent; border: 1px solid rgba(232,238,244,.28);
+    border-radius: var(--radius-sm); cursor: pointer;
+    font-family: var(--font-mono); font-size: .75rem; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--mist);
+  }
+  .nav-toggle-bars {
+    position: relative; width: 16px; height: 2px; background: var(--orange);
+  }
+  .nav-toggle-bars::before, .nav-toggle-bars::after {
+    content: ""; position: absolute; left: 0; width: 16px; height: 2px; background: var(--mist);
+  }
+  .nav-toggle-bars::before { top: -5px; }
+  .nav-toggle-bars::after { top: 5px; }
+
+  .header-inner { flex-wrap: wrap; position: relative; }
+
+  .primary-nav {
+    flex-direction: column; align-items: stretch; gap: 0;
+    background: rgba(11,31,58,.98);
+    border-block: 1px solid rgba(232,238,244,.14);
+    padding: var(--space-4) 0 var(--space-6);
+    width: 100%;
+  }
+  .js .primary-nav { display: none; }
+  .js .site-header.nav-open .primary-nav {
+    display: flex;
+    position: absolute; left: 0; right: 0; top: 100%;
+    padding-inline: var(--gutter);
+    max-height: calc(100vh - var(--header-h));
+    overflow-y: auto;
+  }
+
+  .nav-list { flex-direction: column; align-items: stretch; gap: 0; }
+  .nav-list > li { position: static; }
+  .nav-list a {
+    display: block; padding-block: .875rem; font-size: 1.0625rem; opacity: 1;
+    border-bottom: 1px solid rgba(232,238,244,.10);
+  }
+  .nav-list a[aria-current="page"] { box-shadow: inset 3px 0 0 var(--orange); padding-left: .75rem; }
+
+  .nav-list-external { padding-left: 0; border-left: 0; margin-top: var(--space-4); }
+  .nav-list-external a { font-size: .875rem; }
+
+  /* On mobile the platform group is simply always open: fewer taps, and the
+     panel is already a vertical stack. */
+  .js .nav-disclosure { display: none; }
+  .js .nav-group-label,
+  .nav-group-label {
+    display: block; padding-block: .875rem;
+    border-bottom: 1px solid rgba(232,238,244,.10);
+  }
+  .js .nav-submenu,
+  .nav-submenu {
+    display: flex; flex-direction: column; align-items: stretch; gap: 0;
+    position: static; min-width: 0;
+    background: none; border: 0; border-radius: 0; box-shadow: none;
+    padding: 0;
+  }
+  .nav-submenu a { padding-left: var(--space-4); }
+}
+
+/* ==========================================================================
+   Responsive — small screens
+   ========================================================================= */
+@media (max-width: 720px) {
+  :root { --header-h: 60px; }
+  .principles { grid-template-columns: 1fr; }
+  .hero-title { line-height: 1.06; }
+  /* keep the diagram legible: drop the secondary labels and scale the type up
+     so it survives the SVG being rendered at a fraction of its design width */
+  .stack .layer-detail, .stack .stack-tag { display: none; }
+  .stack .layer-name { font-size: 21px; }
+  .stack .ops-label { font-size: 19px; }
+  .footer-inner { align-items: flex-start; }
+  .watch-pager { grid-template-columns: 1fr; }
+  .watch-pager-next, .watch-pager-next:only-child { grid-column: 1; text-align: left; }
+  .filter-actions { margin-left: 0; }
+}
+
+@media (max-width: 520px) {
+  .stack .layer-name { font-size: 25px; }
+  .stack .ops-label { font-size: 22px; }
+  .section-head-row { flex-direction: column; align-items: flex-start; }
+}
+
+/* 320px: the tightest supported width. Nothing may overflow horizontally. */
+@media (max-width: 380px) {
+  .brand-word { font-size: 1rem; }
+  .brand-mark { width: 34px; }
+  .nav-toggle-text { display: none; }
+  .nav-toggle { padding-inline: .625rem; }
+  .cta-row { flex-direction: column; align-items: stretch; }
+  .cta-row .btn { width: 100%; }
+  .series-rail { padding-left: 1.75rem; }
+  .series-step::before { left: -1.75rem; }
+  .series-rail::before { left: 5px; }
+}

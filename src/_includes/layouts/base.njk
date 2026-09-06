@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+{%- set canonical = site.url + page.url %}
+{#- ogImageUrl is already absolute (a verified YouTube thumbnail on watch pages);
+    ogImage is a path inside this site. -#}
+{%- set metaImage = ogImageUrl or (site.url + (ogImage or site.ogImage)) %}
+
+<title>{{ title }}</title>
+<meta name="description" content="{{ description }}">
+{%- if noindex %}
+<meta name="robots" content="noindex, follow">
+{%- else %}
+<link rel="canonical" href="{{ canonical }}">
+{%- endif %}
+<meta name="theme-color" content="{{ site.themeColor }}">
+
+<meta property="og:type" content="{{ ogType or 'website' }}">
+<meta property="og:url" content="{{ canonical }}">
+<meta property="og:site_name" content="{{ site.name }}">
+<meta property="og:title" content="{{ ogTitle or title }}">
+<meta property="og:description" content="{{ description }}">
+<meta property="og:image" content="{{ metaImage }}">
+<meta property="og:image:alt" content="{{ ogImageAlt or 'OpenEduOps — Build it. Secure it. Understand it.' }}">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ ogTitle or title }}">
+<meta name="twitter:description" content="{{ description }}">
+<meta name="twitter:image" content="{{ metaImage }}">
+
+<link rel="icon" type="image/png" href="/assets/logo/favicon-512.png">
+<link rel="apple-touch-icon" href="/assets/logo/apple-touch-icon.png">
+
+<link rel="preload" href="/assets/fonts/SpaceGrotesk-Bold.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="/assets/fonts/Inter-Regular.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css">
+
+{%- for block in structuredData %}
+<script type="application/ld+json">{{ block | jsonld | safe }}</script>
+{%- endfor %}
+
+<!-- Progressive-enhancement flag. Only JS-only affordances hang off .js;
+     no content is ever hidden by it. -->
+<script>document.documentElement.classList.add('js');</script>
+</head>
+
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+{%- include "components/header.njk" %}
+
+<main id="main">
+{{ content | safe }}
+</main>
+
+{%- include "components/footer.njk" %}
+
+<script src="/assets/js/site.js" defer></script>
+{%- for script in pageScripts %}
+<script src="{{ script }}" defer></script>
+{%- endfor %}
+</body>
+</html>

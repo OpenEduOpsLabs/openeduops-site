@@ -1,0 +1,57 @@
+/* --------------------------------------------------------------- motion --
+   Content is visible by default. Nothing in this stylesheet hides a `.reveal`
+   element on its own: `reveal-pending` is added by JavaScript, one element at
+   a time, only for elements it has already committed to revealing. If the
+   script never runs, never loads, or fails halfway, every section is on screen.
+
+   Two classes, two jobs:
+     · reveal-pending   — the only rule that hides anything.
+     · reveal-motion    — the transition that fades it back in.
+   Dropping both together snaps an element visible with no animation at all,
+   which is what the script's failsafes do. A transition that never runs can
+   therefore never strand content at zero opacity.
+   ------------------------------------------------------------------------ */
+.reveal-pending { opacity: 0; transform: translateY(14px); }
+.reveal-motion {
+  transition: opacity 520ms var(--ease-standard), transform 520ms var(--ease-standard);
+}
+.reveal-motion.reveal-delay-1 { transition-delay: 80ms; }
+.reveal-motion.reveal-delay-2 { transition-delay: 160ms; }
+
+/* Hero entrance — a short, staggered rise.
+
+   It moves the copy but never fades it. An `animation-delay` with `backwards`
+   fill holds an element at its `from` state before the animation starts, so a
+   timeline that is frozen or never started (a background tab, a throttled
+   renderer, a page captured mid-load) would hold that state indefinitely. With
+   opacity left out of the keyframe, the worst case is copy sitting 10px low —
+   the hero text can never be invisible. */
+.js .hero-copy > * { animation: rise 620ms var(--ease-standard) backwards; }
+.js .hero-copy > :nth-child(1) { animation-delay: 40ms; }
+.js .hero-copy > :nth-child(2) { animation-delay: 110ms; }
+.js .hero-copy > :nth-child(3) { animation-delay: 190ms; }
+.js .hero-copy > :nth-child(4) { animation-delay: 260ms; }
+.js .hero-copy > :nth-child(5) { animation-delay: 330ms; }
+@keyframes rise { from { transform: translateY(10px); } }
+
+/* ==========================================================================
+   Reduced motion
+   ========================================================================= */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js .hero-copy > *,
+  .stack .stack-signal { animation: none; }
+  /* Even if a stale class survives, the content stays visible. */
+  .reveal-pending { opacity: 1; transform: none; }
+  .reveal-motion { transition: none; }
+  .btn:active { transform: none; }
+  .action:hover::after { transform: rotate(45deg); }
+  .action-external:hover::after { transform: rotate(-45deg); }
+}
+
+/* Printing must never omit or displace a section. */
+@media print {
+  .reveal-pending { opacity: 1; transform: none; }
+  .reveal-motion { transition: none; }
+  .js .hero-copy > * { animation: none; }
+}

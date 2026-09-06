@@ -1,0 +1,36 @@
+/* ------------------------------------------------------------- footer --- */
+.site-footer {
+  background: var(--navy);
+  border-top: 1px solid rgba(232,238,244,.12);
+  color: var(--text-meta-on-dark);
+  padding-block: clamp(2.5rem, 5vw, 4rem);
+}
+.footer-inner {
+  display: flex; flex-wrap: wrap; align-items: flex-end;
+  gap: var(--space-6) clamp(2rem, 6vw, 4rem);
+}
+.footer-brand { margin-right: auto; }
+.footer-brand img { width: 148px; }
+.footer-tagline {
+  margin-top: var(--space-4);
+  font-family: var(--font-display); font-size: .9375rem; color: var(--mist);
+}
+.footer-nav { display: flex; flex-wrap: wrap; gap: var(--space-6) clamp(2rem, 5vw, 3rem); }
+.footer-nav h2 {
+  font-family: var(--font-mono); font-size: .6875rem; font-weight: 500;
+  letter-spacing: var(--ls-label); text-transform: uppercase;
+  color: var(--navy-30); margin-bottom: var(--space-3);
+}
+.footer-nav ul { display: grid; gap: var(--space-1); }
+.footer-nav a {
+  display: inline-flex; align-items: center; min-height: 32px;
+  font-size: .875rem; color: var(--mist);
+  text-decoration: none; opacity: .82;
+}
+.footer-nav a:hover { opacity: 1; text-decoration: underline; text-underline-offset: 4px; }
+.footer-legal {
+  width: 100%;
+  padding-top: var(--space-5);
+  border-top: 1px solid rgba(232,238,244,.12);
+  font-family: var(--font-mono); font-size: .75rem; color: var(--text-meta-on-dark);
+}
