@@ -1,0 +1,52 @@
+---
+layout: layouts/base.njk
+permalink: /guides/
+title: Companion guides | OpenEduOps
+description: Every OpenEduOps tutorial has a companion command guide published as a GitHub Gist. This index links each guide to the tutorial it belongs to.
+---
+{%- set crumbs = [
+      { label: "Home", url: "/" },
+      { label: "Guides", url: "/guides/" }
+    ] %}
+
+<section class="page-head">
+  <div class="shell">
+    {%- include "components/breadcrumbs.njk" %}
+    <div class="page-head-inner">
+      <p class="eyebrow eyebrow-on-dark">Companion guides</p>
+      <h1 class="page-title">The exact commands, next to the tutorial</h1>
+      <p class="page-lede">Every published tutorial has a companion command guide maintained as a
+        GitHub Gist. The Gists stay the canonical reference; this page links each one to the tutorial
+        it belongs to so you can find the right guide without hunting for it.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="shell">
+    <header class="section-head">
+      <h2 class="section-title-sm">{{ catalogue.counts.total }} guides</h2>
+      <p class="section-lede">Listed newest first. Guide links open on GitHub Gist; watch links open a
+        page here where one exists, and YouTube otherwise.</p>
+    </header>
+
+    <ul class="guide-list">
+      {%- for tutorial in catalogue.all %}
+        {%- include "components/guide-row.njk" %}
+      {%- endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="section section-sunken section-tight">
+  <div class="shell">
+    <h2 class="section-title-sm">Looking for the tutorial instead?</h2>
+    <p class="section-lede">The catalogue lists the same {{ catalogue.counts.total }} tutorials with
+      their outcomes, durations, and environments.</p>
+    <p class="cta-row u-mt-6">
+      <a class="btn btn-primary" href="/tutorials/">Browse all tutorials</a>
+    </p>
+  </div>
+</section>
+
+<script type="application/ld+json">{{ crumbs | breadcrumbSchema(site.url) | jsonld | safe }}</script>

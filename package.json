@@ -1,0 +1,28 @@
+{
+  "name": "openeduops-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "OpenEduOps — Moodle and Open edX infrastructure tutorial catalogue. Static site built with Eleventy.",
+  "license": "UNLICENSED",
+  "type": "module",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "start": "eleventy --serve",
+    "dev": "eleventy --serve",
+    "build": "eleventy",
+    "clean": "node tools/clean.mjs",
+    "check:html": "html-validate \"_site/**/*.html\"",
+    "check:structure": "node tools/check-build.mjs",
+    "check:links": "node tools/check-internal-links.mjs",
+    "check:external": "node tools/check-external-links.mjs",
+    "validate": "npm run check:structure && npm run check:links && npm run check:html",
+    "test": "npm run build && npm run validate"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.6",
+    "fast-xml-parser": "^5.11.1",
+    "html-validate": "^11.14.0"
+  }
+}

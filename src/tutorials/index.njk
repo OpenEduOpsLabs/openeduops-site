@@ -1,0 +1,99 @@
+---
+layout: layouts/base.njk
+permalink: /tutorials/
+title: Tutorials | Moodle & Open edX on Linux | OpenEduOps
+description: The full OpenEduOps catalogue of published long-form tutorials for installing, securing, and operating Moodle and Open edX on Linux, newest first.
+pageScripts:
+  - /assets/js/catalogue.js
+---
+{%- set crumbs = [
+      { label: "Home", url: "/" },
+      { label: "Tutorials", url: "/tutorials/" }
+    ] %}
+
+<section class="page-head">
+  <div class="shell">
+    {%- include "components/breadcrumbs.njk" %}
+    <div class="page-head-inner">
+      <p class="eyebrow eyebrow-on-dark">Catalogue</p>
+      <h1 class="page-title">Published tutorials</h1>
+      <p class="page-lede">Every published long-form OpenEduOps tutorial, newest first. Four have a
+        watch page here; the rest link straight to the video on YouTube. Each one has a companion
+        command guide.</p>
+      <p class="meta-row meta-row-on-dark u-mt-6">
+        <span>{{ catalogue.counts.total }} tutorials</span>
+        <span>Moodle {{ catalogue.counts.byPlatform.moodle }}</span>
+        <span>Open edX {{ catalogue.counts.byPlatform["open-edx"] }}</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="catalogue">
+  <div class="shell">
+
+{#-
+  Filters are an enhancement. The stylesheet keeps this block hidden until the
+  JS flag is set, so nobody is shown a control that cannot work — and the
+  complete card list below is server-rendered either way.
+-#}
+    <div class="catalogue-filters">
+      <div class="filter-bar">
+        <fieldset class="filter-group">
+          <legend>Platform</legend>
+          <div class="filter-options">
+            <button class="filter-btn" type="button" data-filter="platform" data-value="all" aria-pressed="true">All</button>
+            {%- for platform in site.platforms %}
+            <button class="filter-btn" type="button" data-filter="platform" data-value="{{ platform.slug }}" aria-pressed="false">{{ platform.name }}</button>
+            {%- endfor %}
+          </div>
+        </fieldset>
+
+        <fieldset class="filter-group">
+          <legend>Responsibility</legend>
+          <div class="filter-options">
+            {%- for pillar in site.responsibilities %}
+            <button class="filter-btn" type="button" data-filter="responsibility" data-value="{{ pillar.slug }}" aria-pressed="false">{{ pillar.name }}</button>
+            {%- endfor %}
+          </div>
+        </fieldset>
+
+        <div class="filter-actions">
+          <button class="filter-clear" type="button" data-filter-clear disabled>Clear filters</button>
+        </div>
+      </div>
+    </div>
+
+{#- The card titles are h3s; this keeps the outline going h1 -> h2 -> h3
+    without repeating the page title on screen. -#}
+    <h2 class="visually-hidden">All published tutorials, newest first</h2>
+
+    <p class="catalogue-count" id="catalogue-count" role="status">Showing all {{ catalogue.counts.total }} tutorials.</p>
+
+    <ul class="card-grid">
+      {%- for tutorial in catalogue.all %}
+        {%- include "components/tutorial-card.njk" %}
+      {%- endfor %}
+    </ul>
+
+    <div class="catalogue-empty" id="catalogue-empty" hidden>
+      <p>No tutorial matches that combination yet.</p>
+      <button class="filter-clear" type="button" data-filter-clear>Clear filters</button>
+    </div>
+
+  </div>
+</section>
+
+<section class="section section-sunken section-tight">
+  <div class="shell">
+    <h2 class="section-title-sm">Prefer to follow a path?</h2>
+    <p class="section-lede">Each platform has an ordered series that builds one environment from the
+      first step to the last.</p>
+    <p class="cta-row u-mt-6">
+      <a class="btn btn-ghost" href="/moodle/">Moodle Foundation Series</a>
+      <a class="btn btn-ghost" href="/open-edx/">Open edX Foundation</a>
+    </p>
+  </div>
+</section>
+
+<script type="application/ld+json">{{ crumbs | breadcrumbSchema(site.url) | jsonld | safe }}</script>

@@ -1,0 +1,31 @@
+{#
+  Catalogue card. Expects `tutorial` (a decorated record from _data/catalogue.js).
+
+  The whole card is one link — the title anchor is stretched over it — so there
+  is a single focus stop, a single accessible name, and a touch target far
+  larger than 44x44. The action line at the bottom names the destination.
+#}
+<li class="tutorial-card"
+    data-platform="{{ tutorial.platform_slug }}"
+    data-responsibility="{{ tutorial.responsibility | lower }}">
+
+  <p class="tutorial-card-head">
+    <span class="badge badge-{{ tutorial.platform_slug }}">{{ tutorial.platform }}</span>
+    <span class="tutorial-card-step">{{ tutorial.stepLabel }} &middot; {{ tutorial.responsibility }}</span>
+  </p>
+
+  <h3>
+    <a href="{{ tutorial.destination.url }}"
+       data-event="{{ tutorial.destination.event }}"
+       {%- if tutorial.destination.external %} rel="noopener"{% endif %}>{{ tutorial.title }}<span class="visually-hidden"> — {{ tutorial.destination.label }}</span></a>
+  </h3>
+
+  <p class="tutorial-card-outcome">{{ tutorial.outcome }}</p>
+
+  <p class="tutorial-card-env">{{ tutorial.environment }}</p>
+
+  <p class="tutorial-card-foot">
+    <span class="tutorial-card-duration">{{ tutorial.display_duration }}</span>
+    <span class="action{% if tutorial.destination.external %} action-external{% endif %}" aria-hidden="true">{{ tutorial.destination.label }}</span>
+  </p>
+</li>

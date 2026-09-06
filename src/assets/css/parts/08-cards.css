@@ -1,0 +1,156 @@
+/* ---------------------------------------------------------------- cards -- */
+
+/* --- platform choice: two equal cards, no hierarchy between them --------- */
+.platform-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.25rem, 2.5vw, 2rem);
+  align-items: stretch;
+}
+.platform-card {
+  display: flex; flex-direction: column;
+  background: var(--white);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-md);
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+}
+.platform-card::before {
+  content: ""; display: block; width: 44px; height: 3px;
+  background: var(--orange); border-radius: 2px; margin-bottom: var(--space-5);
+}
+.platform-card-open-edx::before { background: var(--teal); }
+.platform-card h3 {
+  font-size: clamp(1.375rem, 2.1vw, 1.75rem); font-weight: 700; letter-spacing: -.01em;
+}
+.platform-card .status { margin-top: var(--space-4); align-self: flex-start; }
+.platform-card p { margin-top: var(--space-4); color: var(--text-muted); }
+.platform-card .btn { margin-top: var(--space-6); align-self: flex-start; }
+.platform-card > p:last-of-type { flex: 1 0 auto; }
+
+/* --- start here ---------------------------------------------------------- */
+.starts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.25rem, 2.5vw, 2rem);
+}
+.start {
+  background: var(--white);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-md);
+  padding: clamp(1.25rem, 2.5vw, 1.75rem);
+}
+.start h3 { margin-top: var(--space-3); font-size: 1.125rem; font-weight: 600; }
+.start h3 a { text-decoration: none; }
+.start h3 a:hover { text-decoration: underline; text-decoration-color: var(--orange); }
+.start p { margin-top: var(--space-3); color: var(--text-muted); font-size: .9375rem; }
+.start .meta-row { margin-top: var(--space-4); }
+
+/* --- tutorial card ------------------------------------------------------- */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
+  gap: clamp(1.25rem, 2.4vw, 1.75rem);
+}
+.tutorial-card {
+  display: flex; flex-direction: column;
+  background: var(--white);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-md);
+  padding: clamp(1.25rem, 2.4vw, 1.625rem);
+  transition: border-color var(--dur-fast) var(--ease-standard),
+              box-shadow var(--dur-fast) var(--ease-standard);
+}
+.tutorial-card:hover { border-color: var(--navy-30); box-shadow: var(--shadow-sm); }
+.section-sunken .tutorial-card { background: var(--white); }
+
+.tutorial-card-head {
+  display: flex; flex-wrap: wrap; align-items: center;
+  justify-content: space-between; gap: var(--space-2) var(--space-4);
+}
+.tutorial-card-step {
+  font-family: var(--font-mono); font-size: .75rem; font-weight: 500;
+  letter-spacing: .06em; text-transform: uppercase; color: var(--text-meta);
+}
+.tutorial-card h3 {
+  margin-top: var(--space-4);
+  font-size: 1.125rem; font-weight: 600; line-height: 1.3;
+}
+.tutorial-card h3 a { text-decoration: none; }
+.tutorial-card h3 a:hover { text-decoration: underline; text-decoration-color: var(--orange); }
+.tutorial-card-outcome {
+  margin-top: var(--space-3);
+  color: var(--text-muted); font-size: .9375rem;
+  flex: 1 0 auto;
+}
+.tutorial-card-env {
+  margin-top: var(--space-4);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--border-hairline);
+  font-family: var(--font-mono); font-size: .75rem;
+  color: var(--text-meta); line-height: 1.6;
+}
+.tutorial-card-foot {
+  margin-top: var(--space-3);
+  display: flex; flex-wrap: wrap; align-items: center;
+  justify-content: space-between; gap: var(--space-2) var(--space-4);
+}
+.tutorial-card-duration {
+  font-family: var(--font-mono); font-size: .8125rem; color: var(--text-meta);
+}
+
+/* --- series rail: node-and-trace, ordered, wraps instead of overflowing --- */
+.series-rail { position: relative; padding-left: 2.5rem; max-width: 58rem; }
+.series-rail::before {
+  content: ""; position: absolute; left: 9px; top: 1.5rem; bottom: 1.5rem; width: 2px;
+  background: linear-gradient(var(--navy-30), var(--orange));
+}
+.series-step { position: relative; padding-block: clamp(1rem, 2vw, 1.375rem); }
+.series-step + .series-step { border-top: 1px solid var(--border-hairline); }
+.series-step::before {
+  content: ""; position: absolute; left: -2.5rem; top: 1.75rem;
+  width: 14px; height: 14px; border-radius: 50%;
+  background: var(--white); border: 2px solid var(--navy-30);
+  box-sizing: border-box;
+}
+.series-step:last-child::before { background: var(--orange); border-color: var(--orange); }
+
+.series-step-index {
+  font-family: var(--font-mono); font-size: .75rem; font-weight: 500;
+  letter-spacing: var(--ls-label); text-transform: uppercase; color: var(--text-meta);
+}
+.series-step h3 {
+  margin-top: var(--space-2);
+  font-size: 1.0625rem; font-weight: 600; line-height: 1.35;
+}
+.series-step h3 a { text-decoration: none; }
+.series-step h3 a:hover { text-decoration: underline; text-decoration-color: var(--orange); }
+.series-step-outcome { margin-top: var(--space-2); color: var(--text-muted); font-size: .9375rem; }
+.series-step .meta-row { margin-top: var(--space-3); }
+.series-step-action { margin-top: var(--space-1); }
+/* One link per row: the title anchor covers the whole step, so the action line
+   below it is a real affordance rather than dead text. */
+.series-step h3 a::after { content: ""; position: absolute; inset: 0; }
+.series-step:focus-within { background: var(--mist); border-radius: var(--radius-md); }
+
+/* --- guide index rows ---------------------------------------------------- */
+.guide-list { border-top: 1px solid var(--border-hairline); }
+.guide-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--space-3) var(--space-6);
+  padding-block: clamp(1.125rem, 2vw, 1.5rem);
+  border-bottom: 1px solid var(--border-hairline);
+}
+.guide-row-main { min-width: 0; }
+.guide-row h3 { font-size: 1.0625rem; font-weight: 600; line-height: 1.35; }
+.guide-row .meta-row { margin-top: var(--space-3); }
+.guide-row-actions {
+  display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2) var(--space-5);
+  justify-content: flex-end;
+}
+
+/* One link per card: the title anchor covers the whole card. */
+.tutorial-card { position: relative; }
+.tutorial-card h3 a::after { content: ""; position: absolute; inset: 0; border-radius: var(--radius-md); }
+.tutorial-card:focus-within { border-color: var(--navy-30); }

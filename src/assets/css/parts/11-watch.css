@@ -1,0 +1,85 @@
+/* ----------------------------------------------------------- watch page - */
+.watch { padding-block: clamp(2.5rem, 5vw, 4rem) clamp(4rem, 8vw, 6rem); }
+.watch-inner { max-width: 60rem; margin-inline: auto; }
+
+/* 16:9, responsive, never covered by decoration. */
+.video-frame {
+  aspect-ratio: 16 / 9;
+  background: var(--navy);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+.video-frame iframe {
+  display: block;
+  width: 100%; height: 100%;
+  border: 0;
+}
+
+
+.watch-blocks {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  margin-top: clamp(2rem, 4vw, 3rem);
+}
+.watch-block {
+  background: var(--mist);
+  border-radius: var(--radius-md);
+  padding: clamp(1.25rem, 2.5vw, 1.75rem);
+}
+.watch-block h2 {
+  font-size: 1.0625rem; font-weight: 600;
+  padding-left: 1.25rem; position: relative;
+}
+.watch-block h2::before {
+  content: ""; position: absolute; left: 0; top: .5em;
+  width: 9px; height: 9px; border-radius: 50%; background: var(--teal);
+}
+.watch-block p { margin-top: var(--space-3); color: var(--text-muted); padding-left: 1.25rem; }
+.watch-block-env p { font-family: var(--font-mono); font-size: .8125rem; line-height: 1.7; }
+
+.watch-guide {
+  margin-top: clamp(2rem, 4vw, 3rem);
+  display: flex; flex-wrap: wrap; align-items: center;
+  gap: var(--space-5);
+}
+.watch-guide-note {
+  font-size: .9375rem; color: var(--text-muted); max-width: 44ch;
+}
+
+.watch-scope { margin-top: clamp(2rem, 4vw, 2.5rem); }
+
+/* --- previous / next viewer path ---------------------------------------- */
+.watch-pager {
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--border-hairline);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-5);
+}
+/* A step with no previous keeps the next control in the right-hand column
+   instead of stretching it across the full width. */
+.watch-pager-next:only-child { grid-column: 2; }
+.watch-pager-link {
+  display: block;
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+  text-decoration: none;
+  transition: border-color var(--dur-fast) var(--ease-standard);
+}
+.watch-pager-link:hover { border-color: var(--navy-30); }
+.watch-pager-next { text-align: right; }
+.watch-pager-label {
+  display: block;
+  font-family: var(--font-mono); font-size: .75rem; font-weight: 500;
+  letter-spacing: var(--ls-label); text-transform: uppercase; color: var(--text-meta);
+}
+.watch-pager-title {
+  display: block; margin-top: var(--space-2);
+  font-family: var(--font-display); font-weight: 600; font-size: 1rem;
+  color: var(--navy); line-height: 1.35;
+}
+
+.watch-playlist { margin-top: clamp(2rem, 4vw, 2.5rem); }

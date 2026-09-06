@@ -1,0 +1,62 @@
+/* ------------------------------------------------------------------ base - */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 1rem); }
+
+body {
+  margin: 0;
+  background: var(--surface-page);
+  color: var(--text-body);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-wrap: pretty;
+}
+
+h1, h2, h3, h4 { font-family: var(--font-display); line-height: 1.15; margin: 0; text-wrap: balance; }
+p { margin: 0; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+img { max-width: 100%; height: auto; display: block; }
+
+a { color: var(--navy); text-decoration-color: var(--navy-30); text-underline-offset: 3px; }
+a:hover { text-decoration-color: var(--orange); }
+
+:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+/* Orange focus disappears on the navy hero and footer: use mist there. */
+.hero :focus-visible,
+.final-cta :focus-visible,
+.site-header :focus-visible,
+.site-footer :focus-visible { outline-color: var(--mist); }
+
+.skip-link {
+  position: absolute; left: var(--gutter); top: -4rem; z-index: 100;
+  background: var(--orange); color: var(--text-on-accent);
+  font-family: var(--font-mono); font-size: .8125rem; text-decoration: none;
+  padding: .625rem 1rem; border-radius: var(--radius-sm);
+  transition: top var(--dur-base) var(--ease-standard);
+}
+.skip-link:focus { top: .75rem; }
+
+/* Visually hidden but available to assistive technology. */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0; border: 0;
+  overflow: hidden; clip-path: inset(50%); white-space: nowrap;
+}
+
+/* Marks an external destination in running text and lists. */
+.ext::after {
+  content: "";
+  display: inline-block;
+  width: .5em; height: .5em;
+  margin-left: .4em;
+  border-top: 1.5px solid currentColor;
+  border-right: 1.5px solid currentColor;
+  transform: translateY(-.1em) rotate(45deg);
+}

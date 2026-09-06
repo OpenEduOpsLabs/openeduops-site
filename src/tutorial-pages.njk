@@ -1,0 +1,19 @@
+---
+# One watch page per tutorial record that carries `detail_page: true`.
+# Adding a page is a data change: flip the flag, add the locked title and h1 to
+# site.json -> watchPageMeta, and this file generates the route.
+pagination:
+  data: catalogue.detailPages
+  size: 1
+  alias: tutorial
+permalink: "/tutorials/{{ tutorial.slug }}/"
+layout: layouts/tutorial.njk
+eleventyComputed:
+  title: "{{ site.watchPageMeta[tutorial.slug].title }}"
+  heading: "{{ site.watchPageMeta[tutorial.slug].heading }}"
+  description: "{{ tutorial.summary }}"
+  ogTitle: "{{ site.watchPageMeta[tutorial.slug].heading }}"
+  ogType: video.other
+  ogImageUrl: "{{ tutorial.thumbnail_url }}"
+  ogImageAlt: "Video thumbnail — {{ tutorial.title }}"
+---

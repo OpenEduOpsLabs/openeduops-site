@@ -1,0 +1,52 @@
+{#
+  Primary navigation.
+
+  The Platforms group renders as a labelled list by default, so both platform
+  destinations are reachable with no JavaScript and nothing is hover-only.
+  When the JS flag is set, the label is swapped for a real disclosure button.
+#}
+<header class="site-header" id="site-header">
+  <div class="shell header-inner">
+    <a class="brand" href="/" aria-label="OpenEduOps — home">
+      <img class="brand-mark" src="/assets/logo/openeduops-mark-dark.png" alt="" width="1850" height="665">
+      <span class="brand-word">OpenEduOps</span>
+    </a>
+
+    <button class="nav-toggle" id="nav-toggle" type="button"
+            aria-expanded="false" aria-controls="primary-nav" aria-label="Menu">
+      <span class="nav-toggle-bars" aria-hidden="true"></span>
+      <span class="nav-toggle-text" aria-hidden="true">Menu</span>
+    </button>
+
+    <nav class="primary-nav" id="primary-nav" aria-label="Primary">
+      <ul class="nav-list">
+        {%- for item in site.nav %}
+          {%- if item.children %}
+            <li class="nav-group">
+              <span class="nav-group-label">{{ item.label }}</span>
+              <button class="nav-disclosure" type="button" data-disclosure
+                      aria-expanded="false" aria-controls="nav-{{ item.label | lower }}">{{ item.label }}</button>
+              <ul class="nav-submenu" id="nav-{{ item.label | lower }}">
+                {%- for child in item.children %}
+                  <li>
+                    <a href="{{ child.url }}"{% if page.url == child.url %} aria-current="page"{% endif %}>{{ child.label }}</a>
+                  </li>
+                {%- endfor %}
+              </ul>
+            </li>
+          {%- else %}
+            <li>
+              <a href="{{ item.url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.label }}</a>
+            </li>
+          {%- endif %}
+        {%- endfor %}
+      </ul>
+
+      <ul class="nav-list nav-list-external">
+        <li><a href="{{ site.external.youtube }}" rel="noopener">YouTube</a></li>
+        <li><a href="{{ site.external.github }}" rel="noopener">GitHub</a></li>
+        <li><a href="{{ site.external.x }}" rel="noopener">X</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>

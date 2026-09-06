@@ -1,0 +1,10 @@
+# Normalise line endings: the repository stores LF, checkouts use the platform
+# default. CI builds on Linux, so this keeps the build byte-identical there.
+* text=auto eol=lf
+
+# Binary assets must never be touched.
+*.png binary
+*.jpg binary
+*.ttf binary
+*.woff2 binary
+*.pdf binary

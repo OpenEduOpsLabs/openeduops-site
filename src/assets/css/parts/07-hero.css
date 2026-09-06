@@ -1,0 +1,63 @@
+/* ---------------------------------------------------------------- hero --- */
+.hero {
+  position: relative;
+  background:
+    radial-gradient(120% 90% at 78% 8%, #14304f 0%, rgba(11,31,58,0) 60%),
+    var(--navy);
+  color: var(--text-on-dark);
+  padding-top: calc(var(--header-h) + clamp(3rem, 7vw, 6rem));
+  padding-bottom: clamp(4rem, 8vw, 7rem);
+  overflow: hidden;
+}
+.hero-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.02fr) minmax(0, .98fr);
+  gap: clamp(2.5rem, 6vw, 5rem);
+  align-items: center;
+}
+.hero-title {
+  font-size: clamp(2.75rem, 6.2vw, 4.75rem);
+  font-weight: 700; letter-spacing: -.02em; line-height: 1.05;
+  color: var(--white);
+}
+.hero-lede {
+  margin-top: var(--space-6);
+  font-family: var(--font-display); font-weight: 500;
+  font-size: clamp(1.125rem, 1.9vw, 1.4375rem);
+  color: var(--mist);
+  max-width: 34ch;
+}
+.hero-lede::after {
+  content: ""; display: block; width: 72px; height: 3px;
+  background: var(--orange); border-radius: 2px; margin-top: var(--space-5);
+}
+.hero-text {
+  margin-top: var(--space-5);
+  color: var(--text-meta-on-dark);
+  max-width: 54ch;
+}
+.hero .cta-row { margin-top: var(--space-7); }
+
+/* ------------------------------------------------------- hero diagram --- */
+.stack { width: 100%; height: auto; }
+.stack .layer rect {
+  fill: rgba(232,238,244,.05);
+  stroke: rgba(232,238,244,.20);
+  stroke-width: 1;
+}
+.stack .layer[data-layer="1"] rect { fill: rgba(232,238,244,.11); stroke: rgba(232,238,244,.34); }
+.stack .layer-name {
+  font-family: var(--font-mono); font-size: 13px; font-weight: 500;
+  letter-spacing: .1em; fill: var(--mist);
+}
+.stack .layer-detail { font-family: var(--font-body); font-size: 12.5px; fill: var(--navy-30); }
+.stack .stack-tag {
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: .1em; fill: var(--navy-30);
+}
+.stack .stack-nodes circle { fill: var(--orange); stroke: var(--navy); stroke-width: 3; }
+.stack .ops circle { fill: var(--teal); }
+.stack .ops-label {
+  font-family: var(--font-mono); font-size: 11.5px; letter-spacing: .1em; fill: var(--navy-30);
+}
+.stack .stack-signal { animation: signal 7s linear infinite; opacity: .9; }
+@keyframes signal { from { stroke-dashoffset: 356; } to { stroke-dashoffset: 0; } }

@@ -1,0 +1,27 @@
+{#
+  Guide index row. Expects `tutorial`.
+
+  The site is a discovery layer: it links to the companion Gist, it does not
+  reproduce it. The watch action points at the internal page when one exists
+  and at the exact YouTube video otherwise, labelled either way.
+#}
+<li class="guide-row">
+  <div class="guide-row-main">
+    <h3>{{ tutorial.title }}</h3>
+    <p class="meta-row">
+      <span class="badge badge-{{ tutorial.platform_slug }}">{{ tutorial.platform }}</span>
+      <span>{{ tutorial.stepLabel }}</span>
+      <span>{{ tutorial.display_duration }}</span>
+    </p>
+  </div>
+
+  <p class="guide-row-actions">
+    <a class="action action-external" href="{{ tutorial.guide_url }}"
+       data-event="companion_guide_open" rel="noopener">Companion guide<span class="visually-hidden"> for {{ tutorial.title }} — opens GitHub Gist</span></a>
+
+    <a class="action{% if tutorial.destination.external %} action-external{% endif %}"
+       href="{{ tutorial.destination.url }}"
+       data-event="{{ tutorial.destination.event }}"
+       {%- if tutorial.destination.external %} rel="noopener"{% endif %}>{{ tutorial.destination.label }}<span class="visually-hidden"> — {{ tutorial.title }}</span></a>
+  </p>
+</li>

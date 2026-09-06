@@ -1,0 +1,121 @@
+/* ---------------------------------------------------------------- layout - */
+.shell {
+  width: 100%;
+  max-width: var(--maxw-page);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.section { padding-block: clamp(4rem, 9vw, 7.5rem); }
+.section-tight { padding-block: clamp(2.5rem, 6vw, 4.5rem); }
+.section-sunken { background: var(--surface-sunken); }
+
+/* A section that follows the navy page head does not need a full band of
+   space above it: the colour change already separates them. */
+.page-head + .section,
+.page-head + .watch { padding-top: clamp(2.5rem, 5vw, 4rem); }
+
+.section-head { max-width: 46rem; margin-bottom: clamp(2.5rem, 5vw, 4rem); }
+.section-head-row {
+  display: flex; flex-wrap: wrap; align-items: flex-end;
+  justify-content: space-between; gap: var(--space-5);
+  max-width: none;
+}
+.section-title { font-size: clamp(1.875rem, 3.4vw, 2.75rem); font-weight: 700; letter-spacing: -.02em; }
+.section-title-sm { font-size: clamp(1.5rem, 2.4vw, 2rem); font-weight: 700; letter-spacing: -.02em; }
+.section-lede {
+  margin-top: var(--space-5);
+  font-size: clamp(1.0625rem, 1.4vw, 1.1875rem);
+  color: var(--text-muted);
+  max-width: 60ch;
+}
+
+.eyebrow {
+  font-family: var(--font-mono); font-weight: 500; font-size: .75rem;
+  letter-spacing: var(--ls-label); text-transform: uppercase;
+  color: var(--text-meta); margin-bottom: var(--space-5);
+}
+.eyebrow::before {
+  content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%;
+  background: var(--orange); margin-right: .625rem; vertical-align: baseline;
+}
+.eyebrow-on-dark { color: var(--text-meta-on-dark); }
+
+/* ------------------------------------------------------------ page head - */
+.page-head {
+  background: var(--navy);
+  color: var(--text-on-dark);
+  padding-top: calc(var(--header-h) + clamp(2rem, 5vw, 3.5rem));
+  padding-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+.page-head-inner { max-width: 52rem; }
+.page-title {
+  font-size: clamp(2rem, 4.4vw, 3rem); font-weight: 700;
+  letter-spacing: -.02em; color: var(--white);
+}
+.page-lede {
+  margin-top: var(--space-5);
+  font-size: clamp(1.0625rem, 1.4vw, 1.1875rem);
+  color: var(--text-meta-on-dark);
+  max-width: 62ch;
+}
+
+/* --------------------------------------------------------- breadcrumbs -- */
+.breadcrumbs { margin-bottom: var(--space-5); }
+.breadcrumbs ol { display: flex; flex-wrap: wrap; align-items: center; gap: .375rem var(--space-2); }
+.breadcrumbs li {
+  font-family: var(--font-mono); font-size: .75rem;
+  letter-spacing: .04em; color: var(--text-meta-on-dark);
+}
+.breadcrumbs li + li::before {
+  content: "/"; margin-right: var(--space-2); color: var(--navy-50);
+}
+.breadcrumbs a { color: var(--mist); text-decoration-color: rgba(232,238,244,.4); }
+.breadcrumbs a:hover { text-decoration-color: var(--orange); }
+.breadcrumbs [aria-current="page"] { color: var(--text-meta-on-dark); }
+
+/* ----------------------------------------------------------- mono meta -- */
+.meta-row {
+  display: flex; flex-wrap: wrap; align-items: center;
+  gap: var(--space-2) var(--space-4);
+  font-family: var(--font-mono); font-size: .75rem;
+  letter-spacing: .06em; text-transform: uppercase;
+  color: var(--text-meta);
+}
+.meta-row-on-dark { color: var(--text-meta-on-dark); }
+.meta-row > * { display: inline-flex; align-items: center; gap: .5rem; }
+
+/* Platform badge: a labelled node, never colour alone. */
+.badge {
+  display: inline-flex; align-items: center; gap: .5rem;
+  font-family: var(--font-mono); font-size: .75rem; font-weight: 500;
+  letter-spacing: .06em; text-transform: uppercase;
+  color: var(--text-meta);
+}
+.badge::before {
+  content: ""; width: 9px; height: 9px; border-radius: 50%;
+  background: var(--orange); flex: none;
+}
+.badge-open-edx::before { background: var(--teal); }
+.badge-on-dark { color: var(--text-meta-on-dark); }
+
+/* Status pill for series state. The word carries the meaning; colour supports it. */
+.status {
+  display: inline-flex; align-items: center; gap: .5rem;
+  font-family: var(--font-mono); font-size: .75rem; font-weight: 500;
+  letter-spacing: .06em; text-transform: uppercase;
+  color: var(--navy); background: var(--mist);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-pill);
+  padding: .3125rem .75rem;
+}
+.status::before {
+  content: ""; width: 8px; height: 8px; border-radius: 50%;
+  background: var(--teal); flex: none;
+}
+.status-in-progress::before { background: var(--orange); }
+
+/* ----------------------------------------------------------- utilities -- */
+.u-mt-5 { margin-top: var(--space-5); }
+.u-mt-6 { margin-top: var(--space-6); }
+

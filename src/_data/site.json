@@ -1,0 +1,102 @@
+{
+  "name": "OpenEduOps",
+  "url": "https://openeduops.com",
+  "promise": "Build it. Secure it. Understand it.",
+  "lang": "en",
+  "themeColor": "#0B1F3A",
+  "home": {
+    "title": "OpenEduOps | Moodle & Open edX Infrastructure Tutorials",
+    "description": "Practical tutorials for installing, securing, and operating Moodle and Open edX on Linux, with verification, recovery paths, and companion technical guides."
+  },
+  "ogImage": "/assets/social/openeduops-og.png",
+  "external": {
+    "youtube": "https://www.youtube.com/@OpenEduOps",
+    "github": "https://github.com/OpenEduOpsLabs",
+    "x": "https://x.com/OpenEduOps"
+  },
+  "nav": [
+    { "label": "Tutorials", "url": "/tutorials/" },
+    {
+      "label": "Platforms",
+      "url": "/tutorials/",
+      "children": [
+        { "label": "Moodle", "url": "/moodle/" },
+        { "label": "Open edX", "url": "/open-edx/" }
+      ]
+    },
+    { "label": "Guides", "url": "/guides/" },
+    { "label": "About", "url": "/about/" }
+  ],
+  "platforms": [
+    {
+      "slug": "moodle",
+      "name": "Moodle",
+      "series": "Moodle Foundation Series",
+      "url": "/moodle/",
+      "status": "10 tutorials",
+      "statusKind": "published",
+      "description": "Install, secure, operate, back up, optimize, and monitor a Moodle environment on Ubuntu.",
+      "cta": "Explore Moodle",
+      "playlistTitle": "Moodle Server Administration: Install, Secure & Operate",
+      "playlistUrl": "https://www.youtube.com/playlist?list=PLxJBQDZDnmX16jpW77-t4jfB8W-usBVXo",
+      "startHereSlug": "install-moodle-5-2-ubuntu-24-04"
+    },
+    {
+      "slug": "open-edx",
+      "name": "Open edX",
+      "series": "Open edX Foundation",
+      "url": "/open-edx/",
+      "status": "In progress · 2 tutorials",
+      "statusKind": "in-progress",
+      "description": "Prepare, install, and progressively operate Open edX with Tutor from a verified Ubuntu host.",
+      "cta": "Explore Open edX",
+      "playlistTitle": "Open edX Foundation",
+      "playlistUrl": "https://www.youtube.com/playlist?list=PLdQ7IIVe2FoU",
+      "startHereSlug": "prepare-ubuntu-open-edx-tutor"
+    }
+  ],
+  "responsibilities": [
+    {
+      "slug": "build",
+      "name": "Build",
+      "index": "01",
+      "claim": "Build the platform from the infrastructure up.",
+      "text": "Installation, web stack, databases, DNS, HTTPS, email, and the services the LMS depends on.",
+      "tags": ["install", "web stack", "database", "DNS", "HTTPS", "email"]
+    },
+    {
+      "slug": "secure",
+      "name": "Secure",
+      "index": "02",
+      "claim": "Protect the system without losing sight of how it works.",
+      "text": "Access control, firewalling, service exposure, TLS, hardening, permissions, and recovery before risky changes.",
+      "tags": ["access", "firewall", "exposure", "TLS", "permissions", "rollback"]
+    },
+    {
+      "slug": "operate",
+      "name": "Operate",
+      "index": "03",
+      "claim": "Keep the platform observable, maintainable, and recoverable.",
+      "text": "Caching, backups, monitoring, automation, scheduling, troubleshooting, and operational verification.",
+      "tags": ["caching", "backups", "monitoring", "cron", "logs", "recovery"]
+    }
+  ],
+  "watchPageMeta": {
+    "install-moodle-5-2-ubuntu-24-04": {
+      "title": "Install Moodle 5.2 on Ubuntu 24.04 | OpenEduOps",
+      "heading": "Install Moodle 5.2 on Ubuntu 24.04 LTS"
+    },
+    "moodle-cron-email-ubuntu-24-04": {
+      "title": "Moodle 5.2 Cron and Email Setup | OpenEduOps",
+      "heading": "Configure Moodle 5.2 Cron and Outgoing Email"
+    },
+    "prepare-ubuntu-open-edx-tutor": {
+      "title": "Prepare Ubuntu 26.04 for Open edX Tutor | OpenEduOps",
+      "heading": "Prepare the Right Server for Open edX with Tutor"
+    },
+    "install-open-edx-verawood-tutor": {
+      "title": "Install Open edX Verawood with Tutor | OpenEduOps",
+      "heading": "Install Open edX Verawood with Tutor"
+    }
+  }
+}
