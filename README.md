@@ -123,14 +123,30 @@ That is the whole job for a normal tutorial. Every mandatory field:
 | `outcome` | what the viewer ends up with; shown on cards and series rows |
 | `environment` | the versions covered, separated by ` · ` |
 | `upload_date` | the real publication timestamp, ISO 8601 with offset |
-| `display_duration` | `MM:SS`, as shown to the viewer |
-| `duration_iso` | ISO 8601 duration, e.g. `PT27M2S` — used in `VideoObject` |
+| `display_duration` | `MM:SS`, the viewer-facing duration — see the note below |
+| `duration_iso` | ISO 8601 duration, e.g. `PT27M2S` — see the note below |
 | `video_id` | the YouTube id |
 | `youtube_url` | `https://www.youtube.com/watch?v=<id>` |
 | `embed_url` | `https://www.youtube-nocookie.com/embed/<id>` |
 | `thumbnail_url` | `https://i.ytimg.com/vi/<id>/maxresdefault.jpg` |
 | `guide_url` | the companion Gist |
 | `detail_page` | `true` only when the tutorial has its own watch page |
+
+#### The two duration fields
+
+They serve different consumers and are **not** derived from each other:
+
+- **`display_duration`** is the viewer-facing duration, as YouTube shows it. It
+  is what appears on catalogue cards, series rows and the guides index.
+- **`duration_iso`** is the machine-readable duration that goes into the
+  `VideoObject` structured data on a watch page. Nothing renders it as text.
+
+Four of the current records carry values that differ by one second between the
+two — `16:23`/`PT16M22S`, `25:19`/`PT25M18S`, `23:09`/`PT23M8S`,
+`30:26`/`PT30M25S`. That is expected: rounding differs between YouTube's
+displayed duration and its reported length. **Both values are recorded as
+supplied and neither should be "corrected" to match the other** without
+stronger authoritative evidence about the real length of the video.
 
 Rebuild. The record now appears in the catalogue (sorted by `upload_date`
 descending), on its platform hub (sorted by `sequence`), on the guides index,
@@ -259,9 +275,18 @@ and nothing is attached today.
 
 ---
 
-## Other directories
+## Legacy passthrough assets
 
-`_ds/` holds the OpenEduOps design-system bundle and `uploads/` holds the
-original logo artwork. Neither is part of the site build, but both are already
-reachable on the live domain, so they are copied through to `_site/` unchanged
-rather than dropped. Nothing links to them.
+`_ds/` (the OpenEduOps design-system bundle) and `uploads/` (the original logo
+artwork) predate this rebuild. Neither is part of the site: no page links to
+them, they are absent from navigation, and they are excluded from
+`sitemap.xml`.
+
+They are nonetheless copied verbatim into `_site/` by
+`eleventyConfig.addPassthroughCopy` in `.eleventy.js`, because both are already
+reachable on the live domain and dropping them would break existing public
+URLs. **This is a deliberate, temporary retention for this release only.**
+
+Once it is confirmed that nothing external depends on those paths, remove the
+two `addPassthroughCopy` entries in `.eleventy.js`; the directories can stay in
+the repository as source material without being published.

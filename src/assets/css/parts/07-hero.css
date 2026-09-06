@@ -25,7 +25,9 @@
   font-family: var(--font-display); font-weight: 500;
   font-size: clamp(1.125rem, 1.9vw, 1.4375rem);
   color: var(--mist);
-  max-width: 34ch;
+  max-width: 36ch;
+  /* Even out the two lines rather than leaving a short widow on the second. */
+  text-wrap: balance;
 }
 .hero-lede::after {
   content: ""; display: block; width: 72px; height: 3px;

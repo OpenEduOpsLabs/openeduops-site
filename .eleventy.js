@@ -21,8 +21,12 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ CNAME: "CNAME" });
   eleventyConfig.addPassthroughCopy({ ".nojekyll": ".nojekyll" });
 
-  // Pre-existing repository material that is already reachable on the live
-  // site. Copied through so this release removes no published URL.
+  // Legacy passthrough assets. Nothing on the site links to these, and they are
+  // excluded from the sitemap, but both paths are already reachable on the live
+  // domain — so they are copied through for this release to avoid breaking
+  // existing public URLs. Temporary: drop these two lines once it is confirmed
+  // that nothing external depends on them. See README, "Legacy passthrough
+  // assets".
   eleventyConfig.addPassthroughCopy({ uploads: "uploads" });
   eleventyConfig.addPassthroughCopy({ _ds: "_ds" });
 

@@ -4,10 +4,6 @@
   "promise": "Build it. Secure it. Understand it.",
   "lang": "en",
   "themeColor": "#0B1F3A",
-  "home": {
-    "title": "OpenEduOps | Moodle & Open edX Infrastructure Tutorials",
-    "description": "Practical tutorials for installing, securing, and operating Moodle and Open edX on Linux, with verification, recovery paths, and companion technical guides."
-  },
   "ogImage": "/assets/social/openeduops-og.png",
   "external": {
     "youtube": "https://www.youtube.com/@OpenEduOps",
