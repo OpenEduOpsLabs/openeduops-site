@@ -60,6 +60,13 @@
   transition: border-color var(--dur-fast) var(--ease-standard),
               box-shadow var(--dur-fast) var(--ease-standard);
 }
+/* The filter script hides non-matching cards with the native `hidden`
+   attribute. The `display: flex` above is an author declaration, so it
+   outranks the user agent's `[hidden] { display: none }` and the cards stay
+   on screen. Restore the hidden semantics for this one component — no global
+   [hidden] override, because no other element the script hides declares
+   `display`. Higher specificity, so cascade order does not matter. */
+.tutorial-card[hidden] { display: none; }
 .tutorial-card:hover { border-color: var(--navy-30); box-shadow: var(--shadow-sm); }
 .section-sunken .tutorial-card { background: var(--white); }
 

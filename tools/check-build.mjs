@@ -224,6 +224,84 @@ check(
   !readFileSync(join(site, "assets/css/site.css"), "utf8").includes("--text-meta:     #7d8a9c")
 );
 
+/* ------------------------------------- 10. hidden-attribute integrity -- */
+// Regression guard. The catalogue filter hides non-matching cards with the
+// native `hidden` attribute, but `.tutorial-card { display: flex }` is an
+// author declaration and therefore outranks the user agent's
+// `[hidden] { display: none }`. The result was a catalogue that reported
+// "Showing 2 of 12" while painting all 12 cards.
+//
+// The invariant: any element the filter script hides must not carry a
+// `display` declaration unless the stylesheet also restores `display: none`
+// for its `[hidden]` state.
+console.log("\nHidden-attribute integrity");
+
+const siteCss = readFileSync(join(site, "assets/css/site.css"), "utf8");
+const filterJs = readFileSync(join(site, "assets/js/catalogue.js"), "utf8");
+
+/** Every `display` value declared by rules whose selector ends with `selector`. */
+function displayValuesFor(selector) {
+  const escaped = selector.replace(/[.#[\]]/g, "\\$&");
+  const rules = new RegExp(`(?:^|[,{}])[^{},]*${escaped}\\s*\\{([^}]*)\\}`, "gm");
+  const values = [];
+  let match;
+  while ((match = rules.exec(siteCss)) !== null) {
+    for (const declaration of match[1].split(";")) {
+      const [property, ...value] = declaration.split(":");
+      if (property.trim() === "display") values.push(value.join(":").trim());
+    }
+  }
+  return values;
+}
+
+/** Does any rule for this selector declare `display` at all? */
+const declaresDisplay = (selector) => displayValuesFor(selector).length > 0;
+
+/** Is `<selector>[hidden]` declared, and does every such rule set display:none? */
+function hasHiddenGuard(selector) {
+  const values = displayValuesFor(`${selector}[hidden]`);
+  return values.length > 0 && values.every((value) => value === "none");
+}
+
+// Elements the catalogue script toggles. Keep in step with catalogue.js.
+const hiddenBySelector = [".tutorial-card", ".catalogue-empty"];
+
+for (const selector of hiddenBySelector) {
+  if (declaresDisplay(selector)) {
+    check(
+      `${selector} declares display, so it has a [hidden] guard`,
+      hasHiddenGuard(selector),
+      `add \`${selector}[hidden] { display: none; }\``
+    );
+  } else {
+    check(`${selector} declares no display, so [hidden] works unaided`, true);
+  }
+}
+
+// Nothing anywhere — including inside a media query — may re-enable a hidden card.
+const hiddenCardDisplays = displayValuesFor(".tutorial-card[hidden]");
+check(
+  "every .tutorial-card[hidden] rule sets display:none",
+  hiddenCardDisplays.length > 0 && hiddenCardDisplays.every((value) => value === "none"),
+  `declared: ${hiddenCardDisplays.join(", ") || "nothing"}`
+);
+
+// Canary: if the script starts hiding something new, this count changes and
+// whoever changed it has to decide whether that element needs a guard too.
+const toggles = (filterJs.match(/\.hidden\s*=/g) || []).length;
+check(
+  `catalogue.js hides exactly the ${hiddenBySelector.length} element kinds listed above`,
+  toggles === hiddenBySelector.length,
+  `found ${toggles} \`.hidden =\` assignments; update hiddenBySelector and add guards`
+);
+
+// The server-rendered catalogue must never ship pre-hidden cards: with no
+// JavaScript every tutorial stays visible.
+check(
+  "no tutorial card is hidden in the server-rendered HTML",
+  !/<li class="tutorial-card"[^>]*\shidden/.test(cataloguePage)
+);
+
 /* ------------------------------------------------------------ summary -- */
 console.log(`\n${checks - failures}/${checks} checks passed.`);
 if (failures) {
