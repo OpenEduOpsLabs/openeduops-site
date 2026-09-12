@@ -1,9 +1,9 @@
 /**
  * External destination check.
  *
- * Verifies every outbound destination the site promises: the 12 YouTube watch
- * URLs, both playlists, the 12 companion Gists, the 4 nocookie embed URLs, the
- * 4 verified thumbnails, and the three project surfaces.
+ * Verifies every outbound destination the site promises: every published
+ * YouTube watch URL, both playlists, the available companion Gists, nocookie
+ * embed URLs, verified thumbnails, and the three project surfaces.
  *
  * Needs network access. YouTube rate-limits and bot-checks automated requests,
  * so 429 and 403 are reported as RATE-LIMITED rather than counted as broken —
@@ -22,7 +22,7 @@ const site = JSON.parse(readFileSync(join(root, "src/_data/site.json"), "utf8"))
 
 const targets = [
   ...tutorials.map((t) => ["video", t.youtube_url]),
-  ...tutorials.map((t) => ["guide", t.guide_url]),
+  ...tutorials.filter((t) => t.guide_url).map((t) => ["guide", t.guide_url]),
   ...tutorials.filter((t) => t.detail_page).map((t) => ["embed", t.embed_url]),
   ...tutorials.filter((t) => t.detail_page).map((t) => ["thumbnail", t.thumbnail_url]),
   ...site.platforms.map((p) => ["playlist", p.playlistUrl]),

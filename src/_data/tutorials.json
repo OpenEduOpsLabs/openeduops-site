@@ -257,6 +257,28 @@
     "guide_url": "https://gist.github.com/OpenEduOpsLabs/9cc43017a9ffe4ad88aa70384d513bf1",
     "detail_page": true,
     "previous_slug": "prepare-ubuntu-open-edx-tutor",
+    "next_slug": "create-publish-first-open-edx-course"
+  },
+  {
+    "platform": "Open edX",
+    "platform_slug": "open-edx",
+    "series": "Open edX Foundation",
+    "sequence": 3,
+    "responsibility": "Build",
+    "title": "Create and Publish Your First Open edX Course — Beginner’s Guide",
+    "slug": "create-publish-first-open-edx-course",
+    "summary": "Create a course in Studio, set its schedule, build and publish a short lesson with a knowledge check, then enroll a separate learner and verify an answer from that learner’s session.",
+    "outcome": "A published Open edX course that a separate learner can open and submit an answer in.",
+    "environment": "Open edX Verawood · Tutor 22 · Studio · LMS",
+    "upload_date": "2026-09-11T13:00:04-07:00",
+    "display_duration": "11:38",
+    "duration_iso": "PT11M38S",
+    "video_id": "2VuDFZRc3xM",
+    "youtube_url": "https://www.youtube.com/watch?v=2VuDFZRc3xM",
+    "embed_url": "https://www.youtube-nocookie.com/embed/2VuDFZRc3xM",
+    "thumbnail_url": "https://i.ytimg.com/vi/2VuDFZRc3xM/maxresdefault.jpg",
+    "detail_page": true,
+    "previous_slug": "install-open-edx-verawood-tutor",
     "next_slug": null
   }
 ]

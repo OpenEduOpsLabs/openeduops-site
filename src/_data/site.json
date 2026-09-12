@@ -42,9 +42,9 @@
       "name": "Open edX",
       "series": "Open edX Foundation",
       "url": "/open-edx/",
-      "status": "In progress · 2 tutorials",
+      "status": "In progress · 3 tutorials",
       "statusKind": "in-progress",
-      "description": "Prepare, install, and progressively operate Open edX with Tutor from a verified Ubuntu host.",
+      "description": "Prepare and install Open edX with Tutor, then publish a course and verify the learner path.",
       "cta": "Explore Open edX",
       "playlistTitle": "Open edX Foundation",
       "playlistUrl": "https://www.youtube.com/playlist?list=PLdQ7IIVe2FoU",
@@ -93,6 +93,10 @@
     "install-open-edx-verawood-tutor": {
       "title": "Install Open edX Verawood with Tutor | OpenEduOps",
       "heading": "Install Open edX Verawood with Tutor"
+    },
+    "create-publish-first-open-edx-course": {
+      "title": "Create and Publish Your First Open edX Course | OpenEduOps",
+      "heading": "Create and Publish Your First Open edX Course"
     }
   }
 }

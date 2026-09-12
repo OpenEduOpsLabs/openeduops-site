@@ -136,6 +136,11 @@ export default {
   /** The records that have their own watch page, in publication order. */
   detailPages: newestFirst.filter((r) => r.detail_page),
 
+  /** Only published tutorials with a companion guide belong in the guide index. */
+  guides: newestFirst.filter((r) => r.guide_url),
+
+  newestGuideDate: newestFirst.find((r) => r.guide_url)?.upload_date || null,
+
   /** The three most recent publications, for the homepage. */
   latest: newestFirst.slice(0, 3),
 
@@ -147,6 +152,7 @@ export default {
 
   counts: {
     total: records.length,
+    guides: records.filter((r) => r.guide_url).length,
     byPlatform: Object.fromEntries(
       Object.entries(byPlatform).map(([slug, list]) => [slug, list.length])
     ),

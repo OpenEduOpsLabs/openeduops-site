@@ -1,7 +1,7 @@
 # openeduops.com
 
-The public OpenEduOps website: a discovery layer for the published Moodle and
-Open edX infrastructure tutorials.
+The public OpenEduOps website: a discovery layer for published open-source
+learning-platform tutorials.
 
 It is a small static site. Every visitor-facing thing — navigation, catalogue
 cards, series ordering, guide links, metadata, structured data — is generated at
@@ -9,8 +9,8 @@ build time from one data file. Runtime JavaScript adds the mobile menu, the
 catalogue filters, and optional section reveals, and the site is complete
 without any of it.
 
-The videos live on YouTube and the companion command guides live as GitHub
-Gists. This site links to them; it does not copy them.
+The videos live on YouTube. Tutorials that need reusable command guides link to
+their GitHub Gists; this site does not copy them.
 
 ---
 
@@ -35,7 +35,7 @@ Individual checks:
 npm run check:structure   # routes, counts, ordering, JSON-LD, sitemap, Pages files
 npm run check:links       # every internal href and src resolves, fragments included
 npm run check:html        # html-validate over _site/**/*.html
-npm run check:external    # network: the 12 videos, 2 playlists, 12 Gists, 3 project links
+npm run check:external    # network: published videos, playlists, available Gists, project links
 npm run clean             # remove _site/
 ```
 
@@ -122,15 +122,18 @@ That is the whole job for a normal tutorial. Every mandatory field:
 | `summary` | one or two sentences; used as the meta description and the visible intro |
 | `outcome` | what the viewer ends up with; shown on cards and series rows |
 | `environment` | the versions covered, separated by ` · ` |
-| `upload_date` | the real publication timestamp, ISO 8601 with offset |
+| `upload_date` | the verified publication date in ISO 8601; include a timestamp and offset when known |
 | `display_duration` | `MM:SS`, the viewer-facing duration — see the note below |
 | `duration_iso` | ISO 8601 duration, e.g. `PT27M2S` — see the note below |
 | `video_id` | the YouTube id |
 | `youtube_url` | `https://www.youtube.com/watch?v=<id>` |
 | `embed_url` | `https://www.youtube-nocookie.com/embed/<id>` |
 | `thumbnail_url` | `https://i.ytimg.com/vi/<id>/maxresdefault.jpg` |
-| `guide_url` | the companion Gist |
 | `detail_page` | `true` only when the tutorial has its own watch page |
+
+`guide_url` is optional: include it only when a live companion Gist exists.
+The watch page omits the guide action when it is absent, and the guide index
+lists only tutorials with a guide. Never add a placeholder URL.
 
 #### The two duration fields
 
@@ -149,10 +152,10 @@ supplied and neither should be "corrected" to match the other** without
 stronger authoritative evidence about the real length of the video.
 
 Rebuild. The record now appears in the catalogue (sorted by `upload_date`
-descending), on its platform hub (sorted by `sequence`), on the guides index,
-and — if it is one of the three newest — in **Latest tutorials** on the
-homepage. The counts on the homepage, catalogue and guides pages all come from
-the same data, so none of them need editing.
+descending), on its platform hub (sorted by `sequence`), and — if it is one
+of the three newest — in **Latest tutorials** on the homepage. It appears on
+the guides index only if it has `guide_url`. Counts are derived from the same
+data, so none of them need manual editing.
 
 ### 2. How `detail_page` changes the destination
 

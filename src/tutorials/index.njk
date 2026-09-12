@@ -17,9 +17,9 @@ pageScripts:
     <div class="page-head-inner">
       <p class="eyebrow eyebrow-on-dark">Catalogue</p>
       <h1 class="page-title">Published tutorials</h1>
-      <p class="page-lede">Every published long-form OpenEduOps tutorial, newest first. Four have a
-        watch page here; the rest link straight to the video on YouTube. Each one has a companion
-        command guide.</p>
+      <p class="page-lede">Every published long-form OpenEduOps tutorial, newest first.
+        {{ catalogue.detailPages.length }} have a watch page here; the rest link straight to YouTube.
+        Companion guides are available for tutorials that need reusable commands.</p>
       <p class="meta-row meta-row-on-dark u-mt-6">
         <span>{{ catalogue.counts.total }} tutorials</span>
         <span>Moodle {{ catalogue.counts.byPlatform.moodle }}</span>

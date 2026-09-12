@@ -6,7 +6,7 @@ layout: layouts/base.njk
 
   Visible order is fixed: breadcrumbs, platform and step metadata, the h1,
   the summary, the player, what you will accomplish, the environment covered,
-  the companion guide, the scope note, previous/next, then the playlist.
+  the companion guide when present, the scope note, previous/next, then the playlist.
 #}
 {%- set platform = site.platforms | findBy("slug", tutorial.platform_slug) %}
 {%- set crumbs = [
@@ -63,11 +63,13 @@ layout: layouts/base.njk
           </section>
         </div>
 
+        {%- if tutorial.guide_url %}
         <div class="watch-guide">
           <a class="btn btn-primary" href="{{ tutorial.guide_url }}"
              data-event="companion_guide_open" rel="noopener">Open the companion guide</a>
           <p class="watch-guide-note">The exact commands for this tutorial are maintained as a GitHub Gist, which stays the canonical command reference.</p>
         </div>
+        {%- endif %}
 
         <p class="scope-note watch-scope">This is practical lab and tutorial guidance. A working lab, a public demonstration system, and a production environment are not the same thing: check capacity, data protection, change control, and recovery requirements before applying any of it to a system that people depend on.</p>
 
