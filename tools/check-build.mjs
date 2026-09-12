@@ -3,8 +3,8 @@
  *
  * Answers the questions that matter for this release and nothing else:
  * do the Pages files exist, does every published record actually render,
- * are the two series complete and in order, does every companion guide link
- * appear, and is every JSON-LD block and the sitemap machine-readable?
+ * are the two series complete and in order, does every available companion
+ * guide link appear, and is every JSON-LD block and the sitemap machine-readable?
  *
  * Run with: npm run check:structure   (after npm run build)
  */
@@ -107,7 +107,7 @@ check("the result count is announced", cataloguePage.includes('id="catalogue-cou
 
 /* ----------------------------------------------------- 4. platform hubs - */
 console.log("\nPlatform hubs");
-for (const [slug, expected] of [["moodle", 10], ["open-edx", 2]]) {
+for (const [slug, expected] of [["moodle", 10], ["open-edx", 3]]) {
   const page = read(`${slug}/index.html`) || "";
   const steps = countOf(page, 'class="series-step"');
   check(`/${slug}/ renders ${expected} ordered steps`, steps === expected, `found ${steps}`);
@@ -133,11 +133,23 @@ check(
 /* ----------------------------------------------------------- 5. guides -- */
 console.log("\nCompanion guides");
 const guidesPage = read("guides/index.html") || "";
-const missingGuides = tutorials.filter((t) => !guidesPage.includes(t.guide_url));
+const withGuides = tutorials.filter((t) => t.guide_url);
+const withoutGuides = tutorials.filter((t) => !t.guide_url);
+const missingGuides = withGuides.filter((t) => !guidesPage.includes(t.guide_url));
 check(
-  `all ${tutorials.length} companion-guide links render`,
+  `all ${withGuides.length} companion-guide links render`,
   missingGuides.length === 0,
   missingGuides.map((t) => t.slug).join(", ")
+);
+check(
+  "guide index omits tutorials without a guide",
+  withoutGuides.every((t) => !guidesPage.includes(escapeHtml(t.title))),
+  withoutGuides.filter((t) => guidesPage.includes(escapeHtml(t.title))).map((t) => t.slug).join(", ")
+);
+check(
+  `guide index renders exactly ${withGuides.length} guide rows`,
+  countOf(guidesPage, 'class="guide-row"') === withGuides.length,
+  `found ${countOf(guidesPage, 'class="guide-row"')}`
 );
 check(
   "no Gist content is copied into the site",
@@ -159,7 +171,12 @@ for (const tutorial of tutorials.filter((t) => t.detail_page)) {
     page.includes(`<link rel="canonical" href="${SITE_URL}/tutorials/${tutorial.slug}/">`)
   );
   check(`${label}: verified thumbnail used for Open Graph`, page.includes(tutorial.thumbnail_url));
-  check(`${label}: companion guide linked`, page.includes(tutorial.guide_url));
+  check(
+    `${label}: guide treatment matches available guide`,
+    tutorial.guide_url
+      ? page.includes(tutorial.guide_url)
+      : !page.includes('data-event="companion_guide_open"')
+  );
   check(`${label}: visible breadcrumbs`, page.includes('aria-label="Breadcrumb"'));
 }
 
