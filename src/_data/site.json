@@ -42,9 +42,9 @@
       "name": "Open edX",
       "series": "Open edX Foundation",
       "url": "/open-edx/",
-      "status": "In progress · 3 tutorials",
+      "status": "In progress · 4 tutorials",
       "statusKind": "in-progress",
-      "description": "Prepare and install Open edX with Tutor, then publish a course and verify the learner path.",
+      "description": "Prepare and install Open edX with Tutor, publish a course, then configure and verify account email.",
       "cta": "Explore Open edX",
       "playlistTitle": "Open edX Foundation",
       "playlistUrl": "https://www.youtube.com/playlist?list=PLdQ7IIVe2FoU",
@@ -97,6 +97,10 @@
     "create-publish-first-open-edx-course": {
       "title": "Create and Publish Your First Open edX Course | OpenEduOps",
       "heading": "Create and Publish Your First Open edX Course"
+    },
+    "configure-open-edx-email-smtp2go": {
+      "title": "Configure Open edX Email with SMTP2GO | OpenEduOps",
+      "heading": "Configure Open edX Email with SMTP2GO"
     }
   }
 }

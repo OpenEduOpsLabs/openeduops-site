@@ -135,6 +135,11 @@ That is the whole job for a normal tutorial. Every mandatory field:
 The watch page omits the guide action when it is absent, and the guide index
 lists only tutorials with a guide. Never add a placeholder URL.
 
+`scope_note` is optional: a sentence or two stating exactly what the tutorial's
+demonstration proves and what it does not. When present it is shown on the
+watch page above the standard lab-versus-production note. Use it where a title
+could be read as a broader guarantee than the video shows.
+
 #### The two duration fields
 
 They serve different consumers and are **not** derived from each other:
