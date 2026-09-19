@@ -107,7 +107,7 @@ check("the result count is announced", cataloguePage.includes('id="catalogue-cou
 
 /* ----------------------------------------------------- 4. platform hubs - */
 console.log("\nPlatform hubs");
-for (const [slug, expected] of [["moodle", 10], ["open-edx", 3]]) {
+for (const [slug, expected] of [["moodle", 10], ["open-edx", 4]]) {
   const page = read(`${slug}/index.html`) || "";
   const steps = countOf(page, 'class="series-step"');
   check(`/${slug}/ renders ${expected} ordered steps`, steps === expected, `found ${steps}`);
@@ -119,6 +119,17 @@ for (const [slug, expected] of [["moodle", 10], ["open-edx", 3]]) {
   check(
     `/${slug}/ steps appear in learning order`,
     inOrder.every((at, i) => at !== -1 && (i === 0 || at > inOrder[i - 1]))
+  );
+}
+// Each platform's status line in site.json carries a hand-typed count, the one
+// count on the site that is not derived. Keep it honest against the data.
+const siteData = JSON.parse(readFileSync(join(root, "src/_data/site.json"), "utf8"));
+for (const platform of siteData.platforms) {
+  const published = tutorials.filter((t) => t.platform_slug === platform.slug).length;
+  check(
+    `${platform.slug} status line states its ${published} published tutorials`,
+    new RegExp(`(^|\\D)${published} tutorials?\\b`).test(platform.status),
+    `status is "${platform.status}"`
   );
 }
 check(
@@ -178,6 +189,9 @@ for (const tutorial of tutorials.filter((t) => t.detail_page)) {
       : !page.includes('data-event="companion_guide_open"')
   );
   check(`${label}: visible breadcrumbs`, page.includes('aria-label="Breadcrumb"'));
+  if (tutorial.scope_note) {
+    check(`${label}: record scope note rendered`, page.includes(escapeHtml(tutorial.scope_note)));
+  }
 }
 
 /* ------------------------------------------------------ 7. structured -- */

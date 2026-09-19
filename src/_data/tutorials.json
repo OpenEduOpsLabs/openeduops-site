@@ -279,6 +279,30 @@
     "thumbnail_url": "https://i.ytimg.com/vi/2VuDFZRc3xM/maxresdefault.jpg",
     "detail_page": true,
     "previous_slug": "install-open-edx-verawood-tutor",
+    "next_slug": "configure-open-edx-email-smtp2go"
+  },
+  {
+    "platform": "Open edX",
+    "platform_slug": "open-edx",
+    "series": "Open edX Foundation",
+    "sequence": 4,
+    "responsibility": "Build",
+    "title": "Configure Open edX Email with SMTP2GO — Activation & Password Reset",
+    "slug": "configure-open-edx-email-smtp2go",
+    "summary": "Connect a Tutor-based Open edX deployment to SMTP2GO as an authenticated external SMTP relay, verify the effective mail settings, then test account activation and password reset end to end.",
+    "outcome": "Working Open edX account email through an authenticated external SMTP relay, verified with activation and password-reset workflows.",
+    "scope_note": "What the demonstration proves: Open edX hands activation and password-reset mail to an authenticated SMTP relay over STARTTLS, and both workflows complete for a test learner. That verifies the configured route and a controlled delivery path. It does not demonstrate guaranteed Inbox placement, universal deliverability, an inbound SMTP service, production-scale capacity, or high availability.",
+    "environment": "Open edX Verawood · Tutor 22 · SMTP2GO · STARTTLS",
+    "upload_date": "2026-09-16T13:00:30-07:00",
+    "display_duration": "14:49",
+    "duration_iso": "PT14M49S",
+    "video_id": "ctr_Qloo9Xg",
+    "youtube_url": "https://www.youtube.com/watch?v=ctr_Qloo9Xg",
+    "embed_url": "https://www.youtube-nocookie.com/embed/ctr_Qloo9Xg",
+    "thumbnail_url": "https://i.ytimg.com/vi/ctr_Qloo9Xg/maxresdefault.jpg",
+    "guide_url": "https://gist.github.com/OpenEduOpsLabs/a278b29f70a92e3761a10cb6219580db",
+    "detail_page": true,
+    "previous_slug": "create-publish-first-open-edx-course",
     "next_slug": null
   }
 ]
