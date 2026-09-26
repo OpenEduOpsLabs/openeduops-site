@@ -42,9 +42,9 @@
       "name": "Open edX",
       "series": "Open edX Foundation",
       "url": "/open-edx/",
-      "status": "In progress · 4 tutorials",
+      "status": "In progress · 5 tutorials",
       "statusKind": "in-progress",
-      "description": "Prepare and install Open edX with Tutor, publish a course, then configure and verify account email.",
+      "description": "Prepare and install Open edX with Tutor, publish a course, configure account email, then migrate and verify course-scoped roles and permissions.",
       "cta": "Explore Open edX",
       "playlistTitle": "Open edX Foundation",
       "playlistUrl": "https://www.youtube.com/playlist?list=PLdQ7IIVe2FoU",
@@ -101,6 +101,10 @@
     "configure-open-edx-email-smtp2go": {
       "title": "Configure Open edX Email with SMTP2GO | OpenEduOps",
       "heading": "Configure Open edX Email with SMTP2GO"
+    },
+    "migrate-open-edx-verawood-rbac-course-roles": {
+      "title": "Migrate Open edX Verawood Course Roles to RBAC | OpenEduOps",
+      "heading": "Migrate Open edX Course Roles to Verawood RBAC"
     }
   }
 }

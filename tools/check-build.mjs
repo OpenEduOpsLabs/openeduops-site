@@ -107,7 +107,7 @@ check("the result count is announced", cataloguePage.includes('id="catalogue-cou
 
 /* ----------------------------------------------------- 4. platform hubs - */
 console.log("\nPlatform hubs");
-for (const [slug, expected] of [["moodle", 10], ["open-edx", 4]]) {
+for (const [slug, expected] of [["moodle", 10], ["open-edx", 5]]) {
   const page = read(`${slug}/index.html`) || "";
   const steps = countOf(page, 'class="series-step"');
   check(`/${slug}/ renders ${expected} ordered steps`, steps === expected, `found ${steps}`);
