@@ -303,6 +303,30 @@
     "guide_url": "https://gist.github.com/OpenEduOpsLabs/a278b29f70a92e3761a10cb6219580db",
     "detail_page": true,
     "previous_slug": "create-publish-first-open-edx-course",
+    "next_slug": "migrate-open-edx-verawood-rbac-course-roles"
+  },
+  {
+    "platform": "Open edX",
+    "platform_slug": "open-edx",
+    "series": "Open edX Foundation",
+    "sequence": 5,
+    "responsibility": "Secure",
+    "title": "Open edX Verawood RBAC: Migrate Studio Roles and Test Permissions",
+    "slug": "migrate-open-edx-verawood-rbac-course-roles",
+    "summary": "Migrate one Open edX Verawood course from legacy Studio roles to openedx-authz, enable course-scoped RBAC, then verify Course Admin, Course Staff, learner, enrollment, and Django Admin boundaries.",
+    "outcome": "One Open edX course migrated to Verawood's course-authoring RBAC model, with course-scoped roles and permission boundaries verified.",
+    "scope_note": "What the demonstration proves: one existing course was migrated from legacy CourseAccessRole records to openedx-authz with authz.enable_course_authoring enabled for that course; Course Admin manages the course team, Course Staff edits and publishes without managing roles, the learner consumes the published course without Studio access, course-authoring roles stay separate from LMS enrollment, and neither course-scoped role gains global LMS or Studio Django Admin access. That is a controlled migration and permission test for one course in the declared Verawood and Tutor environment. It does not demonstrate an organization-wide or platform-wide RBAC rollout, enterprise identity and access management, every available Open edX role, global administration, bulk account provisioning, manual rollback execution, high availability, or production-scale authorization governance.",
+    "environment": "Open edX Verawood · Tutor 22 · openedx-authz · course-scoped RBAC",
+    "upload_date": "2026-09-25T07:00:38-07:00",
+    "display_duration": "13:54",
+    "duration_iso": "PT13M54S",
+    "video_id": "nMSpGsLBI7I",
+    "youtube_url": "https://www.youtube.com/watch?v=nMSpGsLBI7I",
+    "embed_url": "https://www.youtube-nocookie.com/embed/nMSpGsLBI7I",
+    "thumbnail_url": "https://i.ytimg.com/vi/nMSpGsLBI7I/maxresdefault.jpg",
+    "guide_url": "https://gist.github.com/OpenEduOpsLabs/5330f4a986c79cf869bf287812ee333f",
+    "detail_page": true,
+    "previous_slug": "configure-open-edx-email-smtp2go",
     "next_slug": null
   }
 ]
